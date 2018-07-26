@@ -7,7 +7,7 @@
 - `react-native link react-native-baidu-face`
 - 修改包名(AndroidManifest.xml 的 package 和 android/app/build.gradle > android > defaultConfig > applicationId 填入创建授权时输入的 android 包名)
 - AndroidManifest.xml 中添加照相等权限
-```
+```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.CAMERA" />
@@ -21,7 +21,7 @@
 <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
 ```
 - 配置打包签名文件. 把 创建授权 时用到的签名文件放到 android/app 目录, 然后在 android/app/build.gradle 文件中配置
-```
+```go
 android {
     ...
     signingConfigs {
@@ -62,14 +62,14 @@ android {
 }
 ```
 - 在 android/gradle.properties 文件中配置
-```
+```profile
 ...
 BAIDU_FACE_SDK_LICENSE_ID="*license*"
 BAIDU_FACE_SDK_LICENSE_FILE_NAME="idl-license.face-android" # 可不配, 默认为 idl-license.face-android
 ...
 ```
 - 在 MainApplication.java 中添加
-```
+```java
 import com.baidu.idl.face.BaiduFace; /* 在顶部添加 */
 ...
 @Override
@@ -81,7 +81,7 @@ public void onCreate() {
 ```
 - 把 license 文件放入 android/app/src/main/assets 目录
 - 在 AndroidManifest.xml 的 application 标签中添加(根据使用需求添加)
-```
+```xml
 <!-- 人脸跟踪采集界面 -->
 <activity
         android:name="com.baidu.idl.face.activity.FaceDetectExpActivity"
@@ -105,7 +105,7 @@ public void onCreate() {
         android:theme="@style/Theme_NoTitle"/>
 ```
 - 在 android/app/src/main/res/values/styles.xml 中添加(没有 styles.xml 就创建一个)
-```
+```xml
 <style name="Theme_NoTitle" parent="android:style/Theme.NoTitleBar.Fullscreen">
     <item name="android:windowFrame">@null</item>
     <item name="android:windowContentOverlay">@null</item>
