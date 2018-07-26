@@ -39,15 +39,20 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
-        Boolean success = data.getBooleanExtra("success", false);
         WritableMap resolveData = Arguments.createMap();
-        WritableMap imageData = Arguments.createMap();
-        resolveData.putBoolean("success", success);
-        for (Map.Entry<String, String> entry : images.entrySet()) {
-            imageData.putString(entry.getKey(), entry.getValue());
+        if (null != data) {
+            Boolean success = data.getBooleanExtra("success", false);
+            resolveData.putBoolean("success", success);
         }
-        resolveData.putMap("images", imageData);
+        if (null != images) {
+            WritableMap imageData = Arguments.createMap();
+            for (Map.Entry<String, String> entry : images.entrySet()) {
+                imageData.putString(entry.getKey(), entry.getValue());
+            }
+            resolveData.putMap("images", imageData);
+        }
         p.resolve(resolveData);
+        images = null;
     }
 
     @Override

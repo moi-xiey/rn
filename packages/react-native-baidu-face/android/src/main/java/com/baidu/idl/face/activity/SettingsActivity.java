@@ -1,6 +1,7 @@
 package com.baidu.idl.face.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -8,7 +9,7 @@ import android.widget.TextView;
 import com.baidu.idl.face.platform.FaceConfig;
 import com.baidu.idl.face.platform.FaceSDKManager;
 import com.baidu.idl.face.platform.LivenessTypeEnum;
-import com.baidu.idl.face.platform.R;
+import com.baidu.idl.face.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -150,6 +151,11 @@ public class SettingsActivity extends Activity implements CompoundButton.OnCheck
         FaceConfig config = FaceSDKManager.getInstance().getFaceConfig();
         config.setLivenessTypeList(this.livenessList);
         config.setLivenessRandom(mCbRandom.isChecked());
+
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("success", true);
+        setResult(Activity.RESULT_OK, resultIntent);
+
         super.finish();
     }
 }

@@ -16,6 +16,7 @@ import android.util.DisplayMetrics;
 import android.view.*;
 import android.widget.*;
 import com.baidu.aip.face.stat.Ast;
+import com.baidu.idl.face.R;
 import com.baidu.idl.face.platform.*;
 import com.baidu.idl.face.platform.ui.utils.CameraUtils;
 import com.baidu.idl.face.platform.ui.utils.VolumeUtils;

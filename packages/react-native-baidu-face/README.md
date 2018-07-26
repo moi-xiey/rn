@@ -3,8 +3,8 @@
 ### 使用前准备
 - 创建授权[人脸识别 - 离线SDK管理]. [参考](https://ai.baidu.com/docs#/Face-Android-SDK/d4035af4)
 ### 安装步骤
-- `yarn add react-native-baidu-face-sdk`
-- `react-native link react-native-baidu-face-sdk`
+- `yarn add react-native-baidu-face`
+- `react-native link react-native-baidu-face`
 - 修改包名(AndroidManifest.xml 的 package 和 android/app/build.gradle > android > defaultConfig > applicationId 填入创建授权时输入的 android 包名)
 - AndroidManifest.xml 中添加照相等权限
 ```
@@ -103,4 +103,24 @@ public void onCreate() {
         android:launchMode="singleTop"
         android:screenOrientation="portrait"
         android:theme="@style/Theme_NoTitle"/>
+```
+- 在 android/app/src/main/res/values/styles.xml 中添加(没有 styles.xml 就创建一个)
+```
+<style name="Theme_NoTitle" parent="android:style/Theme.NoTitleBar.Fullscreen">
+    <item name="android:windowFrame">@null</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">false</item>
+</style>
+```
+### 使用
+```javascript
+import BaiduFace from "react-native-baidu-face";
+
+// 人脸跟踪检测
+BaiduFace.detect();
+
+// 活体检测
+BaiduFace.liveness()
 ```

@@ -3,7 +3,6 @@ package com.baidu.idl.face.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 import com.baidu.idl.face.platform.FaceStatusEnum;
 import com.baidu.idl.face.BaiduFaceModule;
 import com.baidu.idl.face.platform.ui.FaceLivenessActivity;
@@ -26,11 +25,11 @@ public class FaceLivenessExpActivity extends FaceLivenessActivity {
         if (status == FaceStatusEnum.OK && mIsCompletion) {
             success = true;
             images = base64ImageMap;
-            Toast.makeText(this, "活体检测-检测成功", Toast.LENGTH_SHORT).show();
+            finish();
         } else if (status == FaceStatusEnum.Error_DetectTimeout ||
                 status == FaceStatusEnum.Error_LivenessTimeout ||
                 status == FaceStatusEnum.Error_Timeout) {
-            Toast.makeText(this, "活体检测-采集超时", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
@@ -38,7 +37,7 @@ public class FaceLivenessExpActivity extends FaceLivenessActivity {
     public void finish() {
         Intent resultIntent = new Intent();
         resultIntent.putExtra("success", success);
-        setResult(Activity.RESULT_OK, resultIntent);
+        setResult(success ? Activity.RESULT_OK : Activity.RESULT_CANCELED, resultIntent);
         BaiduFaceModule.images = images;
         super.finish();
     }

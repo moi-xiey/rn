@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 
+def LICENSE_ID = "\"\""
+def LICENSE_FILE_NAME = "\"idl-license.face-android\""
+
 android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
@@ -9,6 +12,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField("String", "LICENSE_ID", rootProject.hasProperty('BAIDU_FACE_SDK_LICENSE_ID') ? BAIDU_FACE_SDK_LICENSE_ID : LICENSE_ID)
+        buildConfigField("String", "LICENSE_FILE_NAME", rootProject.hasProperty('BAIDU_FACE_SDK_LICENSE_FILE_NAME') ? BAIDU_FACE_SDK_LICENSE_FILE_NAME : LICENSE_FILE_NAME)
     }
     buildTypes {
         release {
