@@ -8,6 +8,7 @@ const BaiduFace = Platform.select({
         liveness: unSupport,
         setting: unSupport,
         config: unSupport,
+        LivenessType: {},
     }
 });
 
@@ -15,17 +16,33 @@ export default {
     /**
      * 人脸检测后会自动拍照
      */
-    detect: BaiduFace.detect,
+    detect: () => BaiduFace.detect(),
     /**
      * 活体检测
      */
-    liveness: BaiduFace.liveness,
+    liveness: () => BaiduFace.liveness(),
     /**
      * 人像配置(界面)
      */
-    setting: BaiduFace.setting,
+    setting: () => BaiduFace.setting(),
     /**
      * 人像配置(代码)
+     *
+     * @param {Object} opt 配置
+     * @param {Boolean} [opt.livenessRandom] 随机活体动作
+     * @param {Array.<LivenessType>} [opt.livenessTypeList] 活体动作
      */
-    config: BaiduFace.config,
+    config: (opt) => BaiduFace.config(opt),
+    /**
+     * 活体类型常量
+     *
+     * Eye: 眨眼
+     * Mouth: 张嘴
+     * HeadUp: 抬头
+     * HeadDown: 低头
+     * HeadLeft: 向左转头
+     * HeadRight: 向右转头
+     * HeadLeftOrRight: 摇头
+     */
+    LivenessType: BaiduFace.LivenessType
 };

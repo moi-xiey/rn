@@ -2,14 +2,16 @@ package com.baidu.idl.face;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.widget.Toast;
 import com.baidu.idl.face.activity.FaceDetectExpActivity;
 import com.baidu.idl.face.activity.FaceLivenessExpActivity;
 import com.baidu.idl.face.activity.SettingsActivity;
+import com.baidu.idl.face.platform.FaceConfig;
+import com.baidu.idl.face.platform.FaceSDKManager;
+import com.baidu.idl.face.platform.LivenessTypeEnum;
 import com.facebook.react.bridge.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.annotation.Nullable;
+import java.util.*;
 
 public class BaiduFaceModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
@@ -17,18 +19,23 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
 
     private static final String MODULE_NAME = "BaiduFace";
 
+    private static final String LIVENESS_RANDOM = "livenessRandom";
+    private static final String LIVENESS_TYPE_LIST = "livenessTypeList";
+
     private static final int REQUEST_DETECT_CODE = 3101;
     private static final int REQUEST_LIVENESS_CODE = 3102;
     private static final int REQUEST_SETTING_CODE = 3103;
 
     private ReactApplicationContext context;
-    private Promise p;
+    private FaceConfig faceConfig;
+    private Promise p = null;
 
     public static HashMap<String, String> images = null;
 
     public BaiduFaceModule(ReactApplicationContext reactContext) {
         super(reactContext);
         context = reactContext;
+        faceConfig = FaceSDKManager.getInstance().getFaceConfig();
         reactContext.addActivityEventListener(this);
     }
 
@@ -39,6 +46,9 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
+        if (p == null) {
+            return;
+        }
         WritableMap resolveData = Arguments.createMap();
         if (null != data) {
             Boolean success = data.getBooleanExtra("success", false);
@@ -53,11 +63,28 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
         }
         p.resolve(resolveData);
         images = null;
+        p = null;
     }
 
     @Override
     public void onNewIntent(Intent intent) {
 
+    }
+
+    @Nullable
+    @Override
+    public Map<String, Object> getConstants() {
+        return Collections.unmodifiableMap(new HashMap<String, Object>() {
+            {
+                put("LivenessType", getTypeConstants());
+            }
+
+            private Map<String, Object> getTypeConstants() {
+                Map<String, Object> map = new HashMap<>();
+                for (LivenessTypeEnum i : LivenessTypeEnum.values()) map.put(i.name(), i.name());
+                return Collections.unmodifiableMap(map);
+            }
+        });
     }
 
     /**
@@ -91,9 +118,34 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
      * 配置项
      */
     @ReactMethod
-    public void config(Promise promise) {
-        Toast.makeText(context, "人像配置", Toast.LENGTH_SHORT).show();
-        p = promise;
+    public void config(ReadableMap config, Promise promise) {
+        try {
+            if (config.hasKey(LIVENESS_RANDOM) && config.getType(LIVENESS_RANDOM).equals(ReadableType.Boolean)) {
+                Boolean livenessRandom = config.getBoolean(LIVENESS_RANDOM);
+                faceConfig.setLivenessRandom(livenessRandom);
+            }
+            if (config.hasKey(LIVENESS_TYPE_LIST) && config.getType(LIVENESS_TYPE_LIST).equals(ReadableType.Array)) {
+                List<String> stringList = new ArrayList<>();
+                for (LivenessTypeEnum type : Arrays.asList(LivenessTypeEnum.values())) {
+                    stringList.add(type.name());
+                }
+                List<LivenessTypeEnum> list = new ArrayList<>();
+                ReadableArray array = config.getArray(LIVENESS_TYPE_LIST);
+                for (Object o : array.toArrayList()) {
+                    if (!stringList.contains(o.toString())) {
+                        continue;
+                    }
+                    list.add(LivenessTypeEnum.valueOf(o.toString()));
+                }
+                if (list.size() > 0) {
+                    faceConfig.setLivenessTypeList(list);
+                }
+            }
+            promise.resolve(true);
+        } catch (Exception ignore) {
+            promise.reject("error", "配置错误");
+        }
+
     }
 
     private void startActivityForResult(Class<?> cls, int code) {
