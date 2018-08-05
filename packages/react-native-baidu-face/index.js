@@ -1,14 +1,36 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
-const unSupport = () => console.warn('该平台不支持');
+const IOSSDKSupport = (method) => {
+    return new Promise(resolve => {
+        SDK[method]();
+        const subscript = EventEmitter.addListener('complete', (data) => {
+            data.bestImage0 = Array.isArray(data.bestImage) ? data.bestImage[0] : '';
+            resolve(data);
+            subscript.remove();
+        });
+    });
+};
+const SDK = NativeModules.BaiduFace;
+const EventEmitter = new NativeEventEmitter(SDK);
 const BaiduFace = Platform.select({
-    android: NativeModules.BaiduFace,
+    android: SDK,
     ios: {
-        detect: unSupport,
-        liveness: unSupport,
-        setting: unSupport,
-        config: unSupport,
-        LivenessType: {},
+        detect: () => {
+            return IOSSDKSupport('detect');
+        },
+        liveness: () => {
+            return IOSSDKSupport('liveness');
+        },
+        config: (opt) => {
+            return new Promise(resolve => {
+                SDK.config(opt);
+                const subscript = EventEmitter.addListener('success', (data) => {
+                    resolve(true);
+                    subscript.remove();
+                });
+            });
+        },
+        LivenessType: SDK.LivenessType,
     }
 });
 
@@ -22,14 +44,11 @@ export default {
      */
     liveness: () => BaiduFace.liveness(),
     /**
-     * 人像配置(界面)
-     */
-    setting: () => BaiduFace.setting(),
-    /**
      * 人像配置(代码)
      *
      * @param {Object} opt 配置
      * @param {Boolean} [opt.livenessRandom] 随机活体动作
+     * @param {Number} [opt.livenessRandomCount] 随机活体检测动作数
      * @param {Array.<LivenessType>} [opt.livenessTypeList] 活体动作
      */
     config: (opt) => BaiduFace.config(opt),
