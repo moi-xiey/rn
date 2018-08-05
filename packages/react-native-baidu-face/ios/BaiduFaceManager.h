@@ -1,5 +1,7 @@
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
+#import "PassDataDelegate.h"
 
-@interface BaiduFaceManager : NSObject <RCTBridgeModule>
+@interface BaiduFaceManager : RCTEventEmitter <RCTBridgeModule, PassDataDelegate>
 
 @end

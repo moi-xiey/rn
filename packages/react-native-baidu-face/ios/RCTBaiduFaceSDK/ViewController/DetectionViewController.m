@@ -73,6 +73,7 @@
                         [UIView animateWithDuration:0.5 animations:^{
                             weakSelf.animaView.alpha = 0;
                         } completion:^(BOOL finished) {
+                            self.data = images;
                             [weakSelf closeAction];
                         }];
                     }];

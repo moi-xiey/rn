@@ -21,6 +21,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
 
     private static final String LIVENESS_RANDOM = "livenessRandom";
     private static final String LIVENESS_TYPE_LIST = "livenessTypeList";
+    private static final String LIVENESS_RANDOM_COUNT = "livenessRandomCount";
 
     private static final int REQUEST_DETECT_CODE = 3101;
     private static final int REQUEST_LIVENESS_CODE = 3102;
@@ -140,6 +141,10 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
                 if (list.size() > 0) {
                     faceConfig.setLivenessTypeList(list);
                 }
+            }
+            if (config.hasKey(LIVENESS_RANDOM_COUNT) && config.getType(LIVENESS_RANDOM_COUNT).equals(ReadableType.Number)) {
+                Integer count = config.getInt(LIVENESS_RANDOM_COUNT);
+                faceConfig.setLivenessRandomCount(count);
             }
             promise.resolve(true);
         } catch (Exception ignore) {

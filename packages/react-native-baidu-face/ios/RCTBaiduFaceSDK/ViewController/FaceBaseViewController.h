@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CircleView.h"
+#import "PassDataDelegate.h"
 
 typedef enum : NSUInteger {
     CommonStatus,
@@ -23,6 +24,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, readwrite, assign) CGRect previewRect;
 @property (nonatomic, readwrite, assign) CGRect detectRect;
 @property (nonatomic, readwrite, retain) CircleView * circleView;
+@property (nonatomic, assign) NSObject<PassDataDelegate> *delegate;
+@property (nonatomic, readwrite, assign) NSDictionary * data;
 
 - (void)faceProcesss:(UIImage *)image;
 

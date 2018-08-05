@@ -78,6 +78,11 @@
     });
 }
 
+- (void)loadView {
+    [super loadView];
+    self.data = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -177,6 +182,7 @@
     [super viewDidDisappear:animated];
     self.hasFinished = YES;
     self.videoCapture.runningStatus = NO;
+    [self.delegate passData:self.data];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
