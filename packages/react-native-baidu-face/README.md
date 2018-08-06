@@ -34,6 +34,7 @@
     <summary>iOS 步骤</summary>
 
     - xcode打开项目, 在 Frameworks 文件右键 Add Files to "xxx", 在弹出的框中选择 ${项目根目录}/node_modules/react-native-baidu-face/ios/IDLFaceSDK.framework 文件, 点击 add 按钮
+    - 确认 General/Identity/Bundle Identifier 与创建授权时填入的要一致
     - General/Embedded Binaries 下点击 + 号, 在弹窗中选中 Frameworks/IDLFaceSDK.framework, 点击 add 按钮
     - General/Linked Frameworks and Libraries 下点击 + 号, 选择 libc++.tbd, 点击 add 按钮
     - Build Settings/Search Paths/Framework Search Paths 添加 $(SRCROOT)/../node_modules/react-native-baidu-face/ios(选择recursive)
@@ -41,6 +42,7 @@
     - Build Phases/Copy Bundle Resources 下点击 + 号, 在弹框中点击 Add Other... 按钮, 在弹出的框中跳转到 ${项目根目录}/node_modules/react-native-baidu-face/ios/ 目录选择添加 com.baidu.idl.face.faceSDK.bundle 和 com.baidu.idl.face.model.bundle 文件
     - 把 license 文件的名称改为 idl-license.face-ios, 然后按照上一个步骤把该文件添加到 Build Phases/Copy Bundle Resources 中
     - 在 info.plist 中添加 NSCameraUsageDescription
+    - 在 info.plist 中添加 BAIDU_FACE_LICENSE_ID, 值为*创建授权*是填入的*授权标识*
     - 在 AppDelegate.m 中
     ```objective-c
     #import "BaiduFace.h" // 引入头文件
