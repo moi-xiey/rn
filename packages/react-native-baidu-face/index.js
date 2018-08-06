@@ -4,8 +4,12 @@ const IOSSDKSupport = (method) => {
     return new Promise(resolve => {
         SDK[method]();
         const subscript = EventEmitter.addListener('complete', (data) => {
+            if (!data) {
+                resolve({ success: false });
+                return;
+            }
             data.bestImage0 = Array.isArray(data.bestImage) ? data.bestImage[0] : '';
-            resolve(data);
+            resolve({ success: true, images: data });
             subscript.remove();
         });
     });
