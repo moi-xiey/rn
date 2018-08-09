@@ -34,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0ABE89B6211BEFFC00899E36 /* PassDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassDataDelegate.h; sourceTree = "<group>"; };
 		0ACE21662112D71F00E5F126 /* VideoCaptureDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureDevice.h; sourceTree = "<group>"; };
 		0ACE21672112D71F00E5F126 /* VideoCaptureDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCaptureDevice.m; sourceTree = "<group>"; };
 		0ACE21692112D71F00E5F126 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		0ACE21682112D71F00E5F126 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0ABE89B6211BEFFC00899E36 /* PassDataDelegate.h */,
 				0ACE21692112D71F00E5F126 /* ImageUtils.m */,
 				0ACE216A2112D71F00E5F126 /* ImageUtils.h */,
 			);

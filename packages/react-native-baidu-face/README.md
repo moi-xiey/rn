@@ -42,7 +42,7 @@
     - Build Phases/Copy Bundle Resources 下点击 + 号, 在弹框中点击 Add Other... 按钮, 在弹出的框中跳转到 ${项目根目录}/node_modules/react-native-baidu-face/ios/ 目录选择添加 com.baidu.idl.face.faceSDK.bundle 和 com.baidu.idl.face.model.bundle 文件
     - 把 license 文件的名称改为 idl-license.face-ios, 然后按照上一个步骤把该文件添加到 Build Phases/Copy Bundle Resources 中
     - 在 info.plist 中添加 NSCameraUsageDescription
-    - 在 info.plist 中添加 BAIDU_FACE_LICENSE_ID, 值为*创建授权*是填入的*授权标识*
+    - 在 info.plist 中添加 BAIDU_FACE_LICENSE_ID, 值为**创建授权**是填入的**授权标识**
     - 在 AppDelegate.m 中
     ```objective-c
     #import "BaiduFace.h" // 引入头文件
