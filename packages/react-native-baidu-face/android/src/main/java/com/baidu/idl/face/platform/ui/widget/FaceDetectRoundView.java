@@ -19,8 +19,8 @@ public class FaceDetectRoundView extends View {
     private static final String TAG = FaceDetectRoundView.class.getSimpleName();
 
     public static final float SURFACE_HEIGHT = 1000f;
-    public static final float SURFACE_RATIO = 0.75f;
-    public static final float WIDTH_SPACE_RATIO = 0.33f;
+    public static final float SURFACE_RATIO = 0.8f;
+    public static final float WIDTH_SPACE_RATIO = 0.2f;
     public static final float HEIGHT_RATIO = 0.1f;
     public static final float HEIGHT_EXT_RATIO = 0.2f;
     public static final int CIRCLE_SPACE = 5;
