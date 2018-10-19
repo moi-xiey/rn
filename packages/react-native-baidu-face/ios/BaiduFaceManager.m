@@ -17,6 +17,10 @@
     return @[@"complete", @"success"];
 }
 
++ (BOOL)requiresMainQueueSetup {
+  return YES;
+}
+
 RCT_EXPORT_MODULE(BaiduFace)
 
 - (NSDictionary *)constantsToExport {
@@ -63,12 +67,12 @@ RCT_EXPORT_METHOD(config:(nullable NSDictionary *) config)
         [self sendEventWithName:@"success" body:@YES];
         return;
     }
-    
+
     id livenessRandom = [config valueForKey:@"livenessRandom"];
     if (livenessRandom != nil) {
         LivingConfigModel.sharedInstance.isByOrder = ![livenessRandom boolValue];
     }
-    
+
     NSMutableArray *livenessTypeList = [config mutableArrayValueForKey:@"livenessTypeList"];
     if (livenessTypeList != nil && livenessTypeList.count > 0) {
         [LivingConfigModel.sharedInstance.liveActionArray removeAllObjects];
@@ -76,14 +80,14 @@ RCT_EXPORT_METHOD(config:(nullable NSDictionary *) config)
             [LivingConfigModel.sharedInstance.liveActionArray addObject:livenessType];
         }
     }
-    
+
     id livenessRandomCount = [config valueForKey:@"livenessRandomCount"];
     if (livenessRandom != nil) {
         long total = [LivingConfigModel.sharedInstance.liveActionArray count];
         long count = [livenessRandomCount longValue];
         LivingConfigModel.sharedInstance.numOfLiveness = total > count ? count : total;
     }
-    
+
     [self sendEventWithName:@"success" body:@YES];
 }
 
