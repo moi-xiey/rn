@@ -23,7 +23,7 @@ RCT_EXPORT_METHOD(bd09towgs84:(nullable NSDictionary *)param callback:(RCTRespon
         callback(nil);
         return;
     }
-    NSDictionary* loc = bd09towgs84(param));
+    NSDictionary* loc = bd09towgs84(param);
     callback(@[loc]);
 }
 

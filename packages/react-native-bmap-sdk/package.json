@@ -1,13 +1,16 @@
 {
   "name": "react-native-bmap-sdk",
   "description": "百度地图",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "https://github.com/moi-xiey/rn",
   "author": "moi-xiey",
   "bugs": "https://github.com/moi-xiey/rn/issues",
   "homepage": "https://github.com/moi-xiey/rn",
   "main": "index.js",
   "license": "MIT",
+  "dependencies": {
+    "supercluster": "^3.0.2"
+  },
   "peerDependencies": {
     "react-native": "^0.56.0"
   }
