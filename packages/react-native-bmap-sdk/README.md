@@ -17,7 +17,7 @@
     - 引入第三方 openssl 库, General/Linked Frameworks and Libraries 点击 + 号在弹窗框点击 Add Other... 按钮, 在弹出的框中跳转到 ${项目根目录}/node_modules/react-native-bmap-sdk/ios/Frameworks/thirdlibs 目录选择添加 libcrypto.a 和 libssl.a 文件
     - Build Settings/Search Paths/Framework Search Paths 添加 $(SRCROOT)/../node_modules/react-native-bmap-sdk/ios/Frameworks
     - Build Settings/Search Paths/Library Search Paths 添加 $(SRCROOT)/../node_modules/react-native-bmap-sdk/ios/Frameworks/thirdlibs
-    - Build Phases/Copy Bundle Resources 点击 + 号/Add Other... 在弹出的框中跳转到 ${项目根目录}/node_modules/react-native-bmap-sdk/ios/Frameworks/BaiduMapAPI_Map.framework/Resources 目录选择添加 mapapi.bundle 文件(勾选“Copy items if needed”复选框)
+    - Build Phases/Copy Bundle Resources 点击 + 号/Add Other... 在弹出的框中跳转到 ${项目根目录}/node_modules/react-native-bmap-sdk/ios/Frameworks/BaiduMapAPI_Map.framework/Resources 目录选择添加 mapapi.bundle,images.bundle 文件(勾选“Copy items if needed”复选框)
   </details>
 
 ### 使用

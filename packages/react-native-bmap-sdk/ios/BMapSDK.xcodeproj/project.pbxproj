@@ -82,8 +82,6 @@
 		0A00B1742179843A00AF79B0 /* RCTPolylineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTPolylineManager.m; sourceTree = "<group>"; };
 		0A00B1752179843A00AF79B0 /* RCTMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTMapView.m; sourceTree = "<group>"; };
 		0A00B1762179843A00AF79B0 /* RCTOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTOverlay.h; sourceTree = "<group>"; };
-		0A00B1782179843A00AF79B0 /* marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@2x.png"; sourceTree = "<group>"; };
-		0A00B1792179843A00AF79B0 /* marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@3x.png"; sourceTree = "<group>"; };
 		0A00B1842179843A00AF79B0 /* RCTCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTCoordinate.h; sourceTree = "<group>"; };
 		0A00B1B02179889D00AF79B0 /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
 		0A00B1B12179889D00AF79B0 /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
@@ -94,6 +92,7 @@
 		0A00B1B72179889D00AF79B0 /* BaiduMapAPI_Map.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Map.framework; sourceTree = "<group>"; };
 		0A00B1B82179889E00AF79B0 /* BaiduMapAPI_Radar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Radar.framework; sourceTree = "<group>"; };
 		0A00B1B92179889E00AF79B0 /* BaiduMapAPI_Cloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Cloud.framework; sourceTree = "<group>"; };
+		0A00B3E12179D23C00AF79B0 /* images.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = images.bundle; sourceTree = "<group>"; };
 		0A434AC721786A7300D4572A /* libBMapSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBMapSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -160,8 +159,7 @@
 		0A00B1772179843A00AF79B0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0A00B1782179843A00AF79B0 /* marker@2x.png */,
-				0A00B1792179843A00AF79B0 /* marker@3x.png */,
+				0A00B3E12179D23C00AF79B0 /* images.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
