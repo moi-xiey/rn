@@ -10,7 +10,7 @@
 
 @implementation CoordinateManager
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(Coordinate)
 
 RCT_EXPORT_METHOD(bd09towgs84:(nullable NSDictionary *)param callback:(RCTResponseSenderBlock)callback) {
     if(param == nil) {
