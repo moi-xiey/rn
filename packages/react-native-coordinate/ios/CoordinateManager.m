@@ -23,8 +23,8 @@ RCT_EXPORT_METHOD(bd09towgs84:(nullable NSDictionary *)param callback:(RCTRespon
         callback(nil);
         return;
     }
-    Location loc = bd09towgs84(LocationMake([latitude doubleValue], [longitude doubleValue]));
-    callback(@[@{@"latitude": @(loc.latitude), @"longitude":@(loc.longitude)}]);
+    NSDictionary* loc = bd09towgs84(param));
+    callback(@[loc]);
 }
 
 RCT_EXPORT_METHOD(wgs84tobd09:(nullable NSDictionary *)param callback:(RCTResponseSenderBlock)callback) {
@@ -38,8 +38,8 @@ RCT_EXPORT_METHOD(wgs84tobd09:(nullable NSDictionary *)param callback:(RCTRespon
         callback(nil);
         return;
     }
-    Location loc = wgs84tobd09(LocationMake([latitude doubleValue], [longitude doubleValue]));
-    callback(@[@{@"latitude": @(loc.latitude), @"longitude":@(loc.longitude)}]);
+    NSDictionary* loc = wgs84tobd09(param);
+    callback(@[loc]);
 }
 
 RCT_EXPORT_METHOD(gcj02tobd09:(nullable NSDictionary *)param callback:(RCTResponseSenderBlock)callback) {
@@ -53,8 +53,8 @@ RCT_EXPORT_METHOD(gcj02tobd09:(nullable NSDictionary *)param callback:(RCTRespon
         callback(nil);
         return;
     }
-    Location loc = gcj02tobd09(LocationMake([latitude doubleValue], [longitude doubleValue]));
-    callback(@[@{@"latitude": @(loc.latitude), @"longitude":@(loc.longitude)}]);
+    NSDictionary* loc = gcj02tobd09(param);
+    callback(@[loc]);
 }
 
 RCT_EXPORT_METHOD(bd09togcj02:(nullable NSDictionary *)param callback:(RCTResponseSenderBlock)callback) {
@@ -68,8 +68,8 @@ RCT_EXPORT_METHOD(bd09togcj02:(nullable NSDictionary *)param callback:(RCTRespon
         callback(nil);
         return;
     }
-    Location loc = bd09togcj02(LocationMake([latitude doubleValue], [longitude doubleValue]));
-    callback(@[@{@"latitude": @(loc.latitude), @"longitude":@(loc.longitude)}]);
+    NSDictionary* loc = bd09togcj02(param);
+    callback(@[loc]);
 }
 
 RCT_EXPORT_METHOD(wgs84togcj02:(nullable NSDictionary *)param callback:(RCTResponseSenderBlock)callback) {
@@ -83,8 +83,8 @@ RCT_EXPORT_METHOD(wgs84togcj02:(nullable NSDictionary *)param callback:(RCTRespo
         callback(nil);
         return;
     }
-    Location loc = wgs84togcj02(LocationMake([latitude doubleValue], [longitude doubleValue]));
-    callback(@[@{@"latitude": @(loc.latitude), @"longitude":@(loc.longitude)}]);
+    NSDictionary* loc = wgs84togcj02(param);
+    callback(@[loc]);
 }
 
 RCT_EXPORT_METHOD(gcj02towgs84:(nullable NSDictionary *)param callback:(RCTResponseSenderBlock)callback) {
@@ -98,8 +98,8 @@ RCT_EXPORT_METHOD(gcj02towgs84:(nullable NSDictionary *)param callback:(RCTRespo
         callback(nil);
         return;
     }
-    Location loc = gcj02towgs84(LocationMake([latitude doubleValue], [longitude doubleValue]));
-    callback(@[@{@"latitude": @(loc.latitude), @"longitude":@(loc.longitude)}]);
+    NSDictionary* loc = gcj02towgs84(param);
+    callback(@[loc]);
 }
 
 @end

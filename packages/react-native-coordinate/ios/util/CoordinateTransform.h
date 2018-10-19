@@ -9,59 +9,51 @@
 #import "math.h"
 #import <Foundation/Foundation.h>
 
-typedef struct
-{
-    double latitude;
-    double longitude;
-} Location;
-
-Location LocationMake(double latitude, double longitude);
-
 @interface CoordinateTransform : NSObject
 
 /**
  *  判断是否已经超出中国范围
  */
-bool outOfChina(Location wgLoc);
+bool outOfChina(NSDictionary* wgLoc);
 
 /**
  *  纬度转换
  */
-double transformlat(Location wgLoc);
+double transformlat(NSDictionary* wgLoc);
 
 /**
  *  经度转换
  */
-double transformlng(Location wgLoc);
+double transformlng(NSDictionary* wgLoc);
 
 /**
  *  百度坐标-》标准坐标
  */
-Location bd09towgs84(Location wgLoc);
+NSDictionary* bd09towgs84(NSDictionary* wgLoc);
 
 /**
  *  标准坐标-》百度坐标
  */
-Location wgs84tobd09(Location wgLoc);
+NSDictionary* wgs84tobd09(NSDictionary* wgLoc);
 
 /**
  *  火星坐标-》百度坐标
  */
-Location gcj02tobd09(Location wgLoc);
+NSDictionary* gcj02tobd09(NSDictionary* wgLoc);
 
 /**
  *  百度坐标-》火星坐标
  */
-Location bd09togcj02(Location wgLoc);
+NSDictionary* bd09togcj02(NSDictionary* wgLoc);
 
 /**
  *  标准坐标-》火星坐标
  */
-Location wgs84togcj02(Location wgLoc);
+NSDictionary* wgs84togcj02(NSDictionary* wgLoc);
 
 /**
  *  火星坐标-》标准坐标
  */
-Location gcj02towgs84(Location wgLoc);
+NSDictionary* gcj02towgs84(NSDictionary* wgLoc);
 
 @end
