@@ -1,3 +1,4 @@
+#import <math.h>
 #import "BaiduFaceManager.h"
 #import <UIKit/UIKit.h>
 #import "LivenessViewController.h"
@@ -18,7 +19,7 @@
 }
 
 + (BOOL)requiresMainQueueSetup {
-  return YES;
+    return YES;
 }
 
 RCT_EXPORT_MODULE(BaiduFace)
@@ -61,7 +62,7 @@ RCT_EXPORT_METHOD(liveness)
     });
 }
 
-RCT_EXPORT_METHOD(config:(nullable NSDictionary *) config)
+RCT_REMAP_METHOD(config, config:(nullable NSDictionary *) config)
 {
     if(config == nil) {
         [self sendEventWithName:@"success" body:@YES];
@@ -85,7 +86,7 @@ RCT_EXPORT_METHOD(config:(nullable NSDictionary *) config)
     if (livenessRandom != nil) {
         long total = [LivingConfigModel.sharedInstance.liveActionArray count];
         long count = [livenessRandomCount longValue];
-        LivingConfigModel.sharedInstance.numOfLiveness = total > count ? count : total;
+        LivingConfigModel.sharedInstance.numOfLiveness = fmaxl(fminl(count, total), 1);
     }
 
     [self sendEventWithName:@"success" body:@YES];

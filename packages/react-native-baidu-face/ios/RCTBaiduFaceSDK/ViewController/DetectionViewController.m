@@ -21,13 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // 纯粹为了在照片成功之后，做闪屏幕动画之用
     self.animaView = [[UIView alloc] initWithFrame:self.view.bounds];
     self.animaView.backgroundColor = [UIColor whiteColor];
     self.animaView.alpha = 0;
     [self.view addSubview:self.animaView];
-    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,7 +54,7 @@
     if (self.hasFinished) {
         return;
     }
-    
+
     __weak typeof(self) weakSelf = self;
     [[IDLFaceDetectionManager sharedInstance] detectStratrgyWithImage:image previewRect:self.previewRect detectRect:self.detectRect completionHandler:^(NSDictionary *images, DetectRemindCode remindCode) {
         switch (remindCode) {
@@ -175,9 +175,9 @@
                 break;
             case DetectRemindCodeTimeout: {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"remind" message:@"超时" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction* action = [UIAlertAction actionWithTitle:@"知道啦" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                        NSLog(@"知道啦");
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"验证超时" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction* action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        NSLog(@"确定");
                     }];
                     [alert addAction:action];
                     UIViewController* fatherViewController = weakSelf.presentingViewController;
@@ -204,6 +204,6 @@
 
 - (void)dealloc
 {
-    
+
 }
 @end

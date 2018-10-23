@@ -69,7 +69,7 @@
                 weakSelf.hasFinished = YES;
                 [self warningStatus:CommonStatus warning:@"非常好"];
                 if (images[@"bestImage"] != nil && [images[@"bestImage"] count] != 0) {
-                    
+
                     NSData* data = [[NSData alloc] initWithBase64EncodedString:[images[@"bestImage"] lastObject] options:NSDataBase64DecodingIgnoreUnknownCharacters];
                     UIImage* bestImage = [UIImage imageWithData:data];
                     NSLog(@"bestImage = %@",bestImage);
@@ -104,7 +104,7 @@
                     UIImage* pitchDown = [UIImage imageWithData:data];
                     NSLog(@"pitchDown = %@",pitchDown);
                 }
-                
+
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.data = images;
                     [weakSelf closeAction];
@@ -241,9 +241,9 @@
                 break;
             case LivenessRemindCodeTimeout: {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"remind" message:@"超时" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction* action = [UIAlertAction actionWithTitle:@"知道啦" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                        NSLog(@"知道啦");
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"验证超时" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction* action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        NSLog(@"确定");
                     }];
                     [alert addAction:action];
                     UIViewController* fatherViewController = weakSelf.presentingViewController;
@@ -271,6 +271,6 @@
 
 - (void)dealloc
 {
-    
+
 }
 @end
