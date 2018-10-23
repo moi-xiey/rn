@@ -2,7 +2,6 @@ import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
 const IOSSDKSupport = (method) => {
     return new Promise(resolve => {
-        SDK[method]();
         const subscript = EventEmitter.addListener('complete', (data) => {
             if (!data) {
                 resolve({ success: false });
@@ -12,6 +11,7 @@ const IOSSDKSupport = (method) => {
             resolve({ success: true, images: data });
             subscript.remove();
         });
+        SDK[method]();
     });
 };
 const SDK = NativeModules.BaiduFace;
@@ -27,11 +27,11 @@ const BaiduFace = Platform.select({
         },
         config: (opt) => {
             return new Promise(resolve => {
-                SDK.config(opt);
                 const subscript = EventEmitter.addListener('success', (data) => {
                     resolve(true);
                     subscript.remove();
                 });
+                SDK.config(opt);
             });
         },
         LivenessType: SDK.LivenessType,
