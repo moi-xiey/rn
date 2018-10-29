@@ -4,7 +4,7 @@
 
 --------------------------------------------------------------------------------------
 
-iOS 地图 SDK v3.4.0是适用于iOS系统移动设备的矢量地图开发包
+iOS 地图 SDK v3.4.4是适用于iOS系统移动设备的矢量地图开发包
 
 --------------------------------------------------------------------------------------
 
@@ -45,38 +45,14 @@ LBS云检索：支持查询存储在LBS云内的自有数据；
  pod setup //更新CocoPods的本地库
  pod search BaiduMapKit  //查看最新地图SDK
  
- 【 新 增 】
- 【基 础 地 图】
- 1.新增当双击手势放大地图时，可以设置地图中心点是否移动至点击处的属性
-   BMKMapView新增：
-   ///双击手势放大地图时, 设置为YES, 地图中心点移动至点击处; 设置为NO，地图中心点不变；默认为YES;
-   @property(nonatomic, getter=isChangeCenterWithDoubleTouchPointEnabled) BOOL ChangeCenterWithDoubleTouchPointEnabled;
+【新增】
+ 1.新增 BMKConvertToBaiduMercatorFromBD09LL 与 BMKConvertToBD09LLFromBaiduMercator 方法，用于百度经纬度和百度墨卡托之间的转换。
+ 2.新增 CLLocationCoordinate2D BMKCoordTrans(CLLocationCoordinate2D coordinate, BMK_COORD_TYPE fromType, BMK_COORD_TYPE toType); 方法，支持WGS84LL->BD09LL, GCJ02LL->BD09LL, BD09LL->GCJ02LL三种经纬度之间的直接转换。
 
- 2.支持标注锁定在屏幕固定位置
-    BMKPointAnnotation新增：
-    ///Annotation固定在指定屏幕位置,  必须与screenPointToLock一起使用。 注意：拖动Annotation isLockedToScreen会被设置为false。
-    ///若isLockedToScreen为true，拖动地图时annotaion不会跟随移动；
-    ///若isLockedToScreen为false，拖动地图时annotation会跟随移动。
-    @property (nonatomic, assign) BOOL isLockedToScreen;
-
-    ///标注在屏幕中锁定的位置，注意：地图初始化后才能设置screenPointToLock。可以在地图加载完成的回调方法：mapViewDidFinishLoading中使用此属性。
-    @property (nonatomic, assign) CGPoint screenPointToLock;
-
- 3.新增接口：设定地理范围在屏幕中的显示区域
-   BMKMapView新增：
-/**
- *根据当前mapView的窗口大小，预留insets指定的边界区域后，将mapRect指定的地理范围显示在剩余的区域内，并尽量充满
- *@param mapRect 要显示的地图范围，用直角坐标系表示
- *@param insets 屏幕四周预留的最小边界（mapRect的内容不会显示在该边界范围内）
- *@param animate 是否采用动画效果
- */
-- (void)fitVisibleMapRect:(BMKMapRect)mapRect edgePadding:(UIEdgeInsets)insets withAnimated:(BOOL)animate;
-
- 【 优 化 】
- 1.解决反复创建和销毁mapView时内存泄漏的问题
- 2.对拖动标注时的弹跳动画效果进行优化
- 3.修复mapView调用selectAnnotation方法时，回调didSelectAnnotationView不调用的问题。
- 4.修复行政区域检索福建和浙江区域没有返回数据的问题
- 5.修复部分使用场景下，设置mapPadding时，overlay位置偏移的问题 
- 6.修复部分使用场景下，加载mapView闪黑屏的问题
+【修复】
+ 1.支持iOS11系统定位权限
+ 2.个性化地图部分catlog不显示的问题
+ 3.室内图无背景色的问题
+ 4.polygon绘制大量节点折线，超出数量，产生飞线问题
+ 5.部分场景下，点击离线地图crash的问题
 
