@@ -2,7 +2,7 @@
 .gradle
 /local.properties
 .idea/
-.DS_Store
+node_modules/
 /build
 /captures
 .externalNativeBuild
@@ -19,3 +19,4 @@ xcuserdata/
 *.perspectivev3
 *.mode1v3
 *.mode2v3
+*.log
