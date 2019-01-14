@@ -15,11 +15,16 @@ class BaiduMapInitializerModule(private val context: ReactApplicationContext) : 
         private var promise: Promise? = promise
 
         override fun onReceive(context: Context, intent: Intent) {
+            if (null == promise) {
+                return
+            }
             if (intent.action == SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK) {
                 promise?.resolve(null)
+                promise = null
             } else {
                 val code = intent.getIntExtra(SDK_BROADTCAST_INTENT_EXTRA_INFO_KEY_ERROR_CODE, 0)
                 promise?.reject(code.toString(), intent.action)
+                promise = null
             }
         }
     }
