@@ -1,7 +1,7 @@
 {
-  "name": "@moi-xiey/react-native-coordinate",
+  "name": "react-native-coordinate",
   "description": "坐标转换",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "repository": "https://github.com/moi-xiey/rn",
   "author": "moi-xiey",
   "bugs": "https://github.com/moi-xiey/rn/issues",
