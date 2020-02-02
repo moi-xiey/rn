@@ -19,4 +19,6 @@
 - (void)bindCalloutPressHandler;
 - (void)setSelected:(BOOL)selected;
 
++ (NSBundle *)bundle;
+
 @end

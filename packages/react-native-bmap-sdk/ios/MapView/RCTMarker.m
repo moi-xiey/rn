@@ -15,7 +15,7 @@
 
 - (instancetype)init {
     self = [super init];
-    _image = [UIImage imageNamed:@"images.bundle/marker.png"];
+    _image = [UIImage imageNamed:@"marker" inBundle:RCTMarker.bundle compatibleWithTraitCollection:nil];
     _annotationView = [[BMKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:nil];
     [self setColor:[RCTConvert UIColor:@(0xfff5533d)]];
     [_annotationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_onPress:)]];
@@ -122,6 +122,15 @@
     UIImage *output = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return output;
+}
+
++ (NSBundle *)bundle {
+    static NSBundle *_bundle = nil;
+    if (_bundle == nil) {
+        NSURL *bundleUrl = [[NSBundle bundleForClass:[self class]] URLForResource:@"react-native-baidumap-sdk" withExtension:@"bundle"];
+        _bundle = [NSBundle bundleWithURL:bundleUrl];
+    }
+    return _bundle;
 }
 
 @end
