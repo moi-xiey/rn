@@ -1,166 +1,115 @@
-import { Component, ReactElement } from "react";
-import { ViewProps, ViewStyle } from "react-native";
+declare module '@moi-xiey/react-native-bmap-sdk' {
+  import React from 'react';
+  import {EmitterSubscription, ViewProps} from 'react-native';
 
-export type Point = {
-  x: number;
-  y: number;
-};
+  type Options = {
+    gps: boolean;
+    distanceFilter: number;
+  };
 
-export type LatLng = {
-  latitude: number;
-  longitude: number;
-};
+  type TLocation = {
+    accuracy?: number,
+    latitude: number,
+    longitude: number,
+    direction: number,
+    locationType: number,
+  };
 
-export type Region = {
-  latitudeDelta: number;
-  longitudeDelta: number;
-} & LatLng;
+  type Listener = (
+    listener: {
+      timestamp: number;
+      altitude: number;
+      speed: number;
+    } & TLocation,
+  ) => void;
 
-export type MapStatus = {
-  center: LatLng;
-  region: Region;
-  overlook: number;
-  rotation: number;
-  zoomLevel: number;
-};
+  type LatLng = {
+    latitude: number,
+    longitude: number,
+  }
 
-export type MapViewStatus = {
-  center?: LatLng;
-  point?: Point;
-  region?: Region;
-  overlook?: number;
-  rotation?: number;
-  zoomLevel?: number;
-};
+  type Region = {
+    latitudeDelta: number,
+    longitudeDelta: number,
+  } & LatLng;
 
-export type Location = {
-  accuracy?: number;
-  latitude: number;
-  longitude: number;
-  direction: number;
-};
+  type SearchResult = { address: string } & LatLng;
 
-export interface MarkerProps extends ViewProps {
-  coordinate: LatLng;
-  color?: string;
-  image?: string;
-  view?: () => ReactElement<any>;
-  title?: string;
-  selected?: boolean;
-  draggable?: boolean;
-  flat?: boolean;
-  centerOffset?: Point;
-  onPress?: () => void;
-  onCalloutPress?: () => void;
-  onDrag?: (coordinate: LatLng) => void;
-  onDragStart?: (coordinate: LatLng) => void;
-  onDragEnd?: (coordinate: LatLng) => void;
-}
+  type ReverseResult = {
+    country: string;
+    countryCode: string;
+    province: string;
+    city: string;
+    cityCode: string;
+    district: string;
+    street: string;
+    streetNumber: string;
+    businessCircle: string;
+    adCode: string;
+    address: string;
+    description: string;
+  } & LatLng;
 
-export class Marker extends Component<MarkerProps> {
-  select(): void;
-  update(): void;
-}
+  type MapStatus = {
+    center: LatLng,
+    region: Region,
+    overlook: number,
+    rotation: number,
+    zoomLevel: number,
+  };
 
-export interface PolylineProps extends ViewProps {
-  points: LatLng[];
-  color?: string;
-  colors?: string;
-  width?: number;
-}
+  type MapViewProps = {
+    satellite?: boolean;
+    trafficEnabled?: boolean;
+    baiduHeatMapEnabled?: boolean;
+    indoorEnabled?: boolean;
+    buildingsDisabled?: boolean;
+    minZoomLevel?: number;
+    maxZoomLevel?: number;
+    compassDisabled?: boolean;
+    zoomControlsDisabled?: boolean;
+    scaleBarDisabled?: boolean;
+    scrollDisabled?: boolean;
+    overlookDisabled?: boolean;
+    rotateDisabled?: boolean;
+    zoomDisalbed?: boolean;
+    center?: LatLng;
+    zoomLevel?: number;
+    rotation?: number;
+    overlook?: number;
+    paused?: boolean;
+    locationEnabled?: boolean;
+    location?: TLocation;
+    locationMode?: 'normal' | 'follow' | 'compass';
+    campassMode?: true;
+    onLoad?: () => void;
+    onClick?: (coordinate: LatLng) => void;
+    onLongClick?: (coordinate: LatLng) => void;
+    onDoubleClick?: (coordinate: LatLng) => void;
+    onStatusChange?: (mapStatus: MapStatus) => void;
+  } & ViewProps;
 
-export class Polyline extends Component<PolylineProps> {}
+  export class Initializer {
+    static init(key: string): Promise<void>;
+  }
 
-export interface PolygonProps extends ViewProps {
-  points: LatLng[];
-  strokeWidth?: number;
-  strokeColor?: string;
-  fillColor?: string;
-}
+  export class Location {
+    static init(): Promise<void>;
 
-export class Polygon extends Component<PolygonProps> {}
+    static start(): void;
 
-export interface CircleProps extends ViewProps {
-  center: LatLng;
-  radius: number;
-  strokeWidth?: number;
-  strokeColor?: string;
-  fillColor?: string;
-}
+    static stop(): void;
 
-export class Circle extends Component<CircleProps> {}
+    static setOptions(options: Options): void;
 
-export type HeatMapPoint = { intensity: number } & LatLng;
+    static addLocationListener(listener: Listener): EmitterSubscription;
+  }
 
-export interface HeatMapProps extends ViewProps {
-  points: HeatMapPoint[];
-  radius?: number;
-  opacity?: number;
-}
+  export class Geocode {
+    static search(address: string, city?: string): Promise<SearchResult>;
 
-export class HeatMap extends Component<HeatMapProps> {}
+    static reverse(coordinate: LatLng): Promise<ReverseResult>;
+  }
 
-export type ClusterParams = {
-  id: number;
-  count: number;
-  coordinate: LatLng;
-};
-
-export type ClusterMarkerItem = {
-  coordinate: LatLng;
-  extra?: any;
-};
-
-export interface ClusterProps extends ViewProps {
-  markers: ClusterMarkerItem[];
-  renderMarker: (ClusterMarkerItem) => ReactElement<any>;
-  radius?: number;
-  clusterStyle?: ViewStyle;
-  clusterTextStyle?: ViewStyle;
-  renderCluster?: (ClusterParams) => ReactElement<any>;
-  onPress?: (ClusterParams) => void;
-}
-
-export class Cluster extends Component<ClusterProps> {
-  update({ zoomLevel: number, region: Region }): void;
-}
-
-export interface MapViewProps extends ViewProps {
-  satellite?: boolean;
-  trafficEnabled?: boolean;
-  baiduHeatMapEnabled?: boolean;
-  indoorEnabled?: boolean;
-  buildingsDisabled?: boolean;
-  minZoomLevel?: number;
-  maxZoomLevel?: number;
-  compassDisabled?: boolean;
-  zoomControlsDisabled?: boolean;
-  scaleBarDisabled?: boolean;
-  scrollDisabled?: boolean;
-  overlookDisabled?: boolean;
-  rotateDisabled?: boolean;
-  zoomDisalbed?: boolean;
-  center?: LatLng;
-  zoomLevel?: number;
-  rotation?: number;
-  overlook?: number;
-  paused?: boolean;
-  locationEnabled?: boolean;
-  location?: Location;
-  locationMode?: "normal" | "follow" | "compass";
-  campassMode?: true;
-  onLoad?: () => void;
-  onClick?: (latlng: LatLng) => void;
-  onLongClick?: (latlng: LatLng) => void;
-  onDoubleClick?: (latlng: LatLng) => void;
-  onStatusChange?: (mapStatus: MapStatus) => void;
-}
-
-export class MapView extends Component<MapViewProps> {
-  static Marker: typeof Marker;
-  static Polyline: typeof Polyline;
-  static Polygon: typeof Polygon;
-  static HeatMap: typeof HeatMap;
-  static Cluster: typeof Cluster;
-  setStatus(status: MapViewStatus, duration?: number): void;
+  export class MapView extends React.Component<MapViewProps> {}
 }
