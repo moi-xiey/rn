@@ -1,7 +1,7 @@
 {
   "name": "@moi-xiey/react-native-bmap-sdk",
   "description": "百度地图",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": "https://github.com/moi-xiey/rn",
   "author": "moi-xiey",
   "bugs": "https://github.com/moi-xiey/rn/issues",
