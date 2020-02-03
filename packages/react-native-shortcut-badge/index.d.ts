@@ -1,4 +1,4 @@
-declare module "react-native-shortcut-badge" {
+declare module "@moi-xiey/react-native-shortcut-badge" {
 
     interface ShortcutBadgeStatic {
         /**
