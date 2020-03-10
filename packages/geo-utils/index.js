@@ -49,7 +49,7 @@ function degreeToRad(degree) {
  * @param {Array} latLng2 [lat, lng]
  * @return {number} 米
  */
-export const getDistance = (latLng1, latLng2) => {
+const getDistance = (latLng1, latLng2) => {
   const lat1 = _getRange(latLng1[0], -74, 74);
   const lng1 = _getLoop(latLng1[1], -180, 180);
   const lat2 = _getRange(latLng2[0], -74, 74);
@@ -76,7 +76,7 @@ function isInside(point, vs) {
   const x = point[0], y = point[1];
 
   let inside = false;
-  for (const i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+  for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
     const xi = vs[i][0], yi = vs[i][1];
     const xj = vs[j][0], yj = vs[j][1];
 
@@ -101,7 +101,7 @@ function getPointToLineDistance(point, lineStartPoint, lineEndPoint) {
   if (Math.acos((b * b + a * a - c * c) / (2 * b * a)) * 180 / Math.PI >= 90) return b;
   if (Math.acos((c * c + a * a - b * b) / (2 * c * a)) * 180 / Math.PI >= 90) return c;
   const P = (a + b + c) / 2;
-  const s = Math.pow(P * (P - a) * (P - b) * (P - c),1 / 2);
+  const s = Math.pow(P * (P - a) * (P - b) * (P - c), 1 / 2);
   return 2 * s / a;
 }
 
@@ -113,7 +113,7 @@ function getPointToLineDistance(point, lineStartPoint, lineEndPoint) {
  */
 function getPointToPolygonDistance(point, vs) {
   const length = vs.length;
-  if(length <= 0) {
+  if (length <= 0) {
     return 0;
   }
   if (length === 1) {
