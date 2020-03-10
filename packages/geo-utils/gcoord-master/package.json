@@ -1,0 +1,38 @@
+{
+  "name": "gcoord",
+  "version": "0.2.3",
+  "description": "geographic coordinate library",
+  "main": "dist/gcoord.js",
+  "module": "dist/gcoord.esm.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js",
+    "lint": "eslint --ext .js,.ts, ./src",
+    "test": "jest && codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hujiulong/gcoord.git"
+  },
+  "author": "Jiulong Hu <me@hujiulong.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hujiulong/gcoord/issues"
+  },
+  "homepage": "https://github.com/hujiulong/gcoord#readme",
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "codecov": "^3.6.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^6.3.1",
+    "eslint-plugin-import": "^2.19.1",
+    "jest": "^23.6.0",
+    "rollup": "^1.27.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.7.2"
+  }
+}
