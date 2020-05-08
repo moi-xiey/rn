@@ -8,6 +8,7 @@ import com.baidu.idl.face.activity.SettingsActivity;
 import com.baidu.idl.face.platform.FaceConfig;
 import com.baidu.idl.face.platform.FaceSDKManager;
 import com.baidu.idl.face.platform.LivenessTypeEnum;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.*;
 
 import javax.annotation.Nullable;
@@ -29,7 +30,6 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
 
     private ReactApplicationContext context;
     private FaceConfig faceConfig;
-    private Promise p = null;
 
     public static HashMap<String, String> images = null;
 
@@ -47,24 +47,24 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
-        if (p == null) {
-            return;
-        }
-        WritableMap resolveData = Arguments.createMap();
-        if (null != data) {
-            Boolean success = data.getBooleanExtra("success", false);
-            resolveData.putBoolean("success", success);
-        }
-        if (null != images) {
-            WritableMap imageData = Arguments.createMap();
-            for (Map.Entry<String, String> entry : images.entrySet()) {
-                imageData.putString(entry.getKey(), entry.getValue());
+        try {
+            WritableMap result = Arguments.createMap();
+            if (null != data) {
+                Boolean success = data.getBooleanExtra("success", false);
+                result.putBoolean("success", success);
             }
-            resolveData.putMap("images", imageData);
+            if (null != images) {
+                WritableMap imageData = Arguments.createMap();
+                for (Map.Entry<String, String> entry : images.entrySet()) {
+                    imageData.putString(entry.getKey(), entry.getValue());
+                }
+                result.putMap("images", imageData);
+            }
+            images = null;
+            sendEvent("complete", result);
+        } catch (Exception ignore) {
+            sendFailEvent();
         }
-        p.resolve(resolveData);
-        images = null;
-        p = null;
     }
 
     @Override
@@ -94,7 +94,6 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
     @ReactMethod
     public void detect(Promise promise) {
         startActivityForResult(FaceDetectExpActivity.class, REQUEST_DETECT_CODE);
-        p = promise;
     }
 
     /**
@@ -103,7 +102,6 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
     @ReactMethod
     public void liveness(Promise promise) {
         startActivityForResult(FaceLivenessExpActivity.class, REQUEST_LIVENESS_CODE);
-        p = promise;
     }
 
     /**
@@ -112,7 +110,6 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
     @ReactMethod
     public void setting(Promise promise) {
         startActivityForResult(SettingsActivity.class, REQUEST_SETTING_CODE);
-        p = promise;
     }
 
     /**
@@ -156,6 +153,23 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
     private void startActivityForResult(Class<?> cls, int code) {
         images = null;
         Intent intent = new Intent(context, cls);
-        context.startActivityForResult(intent, code, null);
+        try {
+            context.startActivityForResult(intent, code, null);
+        } catch (Exception ignore) {
+            sendFailEvent();
+        }
+    }
+
+    private void sendEvent(String eventName, @Nullable WritableMap params) {
+        if (!context) {
+            return;
+        }
+        context.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
+    }
+
+    private void sendFailEvent() {
+        WritableMap result = Arguments.createMap();
+        result.putBoolean("success", false);
+        sendEvent('complete', result);
     }
 }

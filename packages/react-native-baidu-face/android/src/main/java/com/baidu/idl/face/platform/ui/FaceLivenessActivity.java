@@ -471,8 +471,8 @@ public class FaceLivenessActivity extends Activity implements
     }
 
     private void onRefreshSuccessView(boolean isShow) {
-        if (mSuccessView.getTag() == null) {
-            Rect rect = mFaceDetectRoundView.getFaceRoundRect();
+        Rect rect = mFaceDetectRoundView.getFaceRoundRect();
+        if (mSuccessView.getTag() == null && rect != null) {
             RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) mSuccessView.getLayoutParams();
             rlp.setMargins(
                     rect.centerX() - (mSuccessView.getWidth() / 2),

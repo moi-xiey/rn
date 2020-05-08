@@ -1,42 +1,42 @@
-import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
+import { NativeModules, NativeEventEmitter } from 'react-native';
 
-const IOSSDKSupport = (method) => {
+const SDK = NativeModules.BaiduFace;
+const eventEmitter = new NativeEventEmitter(SDK);
+
+const doCapture = (method) => {
     return new Promise(resolve => {
-        const subscript = EventEmitter.addListener('complete', (data) => {
+        const subscript = eventEmitter.addEventListener('complete', (data) => {
             if (!data) {
                 resolve({ success: false });
+                subscript.remove();
                 return;
             }
             data.bestImage0 = Array.isArray(data.bestImage) ? data.bestImage[0] : '';
-            resolve({ success: true, images: data });
+            resolve({ success: !!data.success, images: data });
             subscript.remove();
         });
         SDK[method]();
     });
 };
-const SDK = NativeModules.BaiduFace;
-const EventEmitter = new NativeEventEmitter(SDK);
-const BaiduFace = Platform.select({
-    android: SDK,
-    ios: {
-        detect: () => {
-            return IOSSDKSupport('detect');
-        },
-        liveness: () => {
-            return IOSSDKSupport('liveness');
-        },
-        config: (opt) => {
-            return new Promise(resolve => {
-                const subscript = EventEmitter.addListener('success', (data) => {
-                    resolve(true);
-                    subscript.remove();
-                });
-                SDK.config(opt);
+
+const BaiduFace = {
+    detect: () => {
+        return doCapture('detect');
+    },
+    liveness: () => {
+        return doCapture('liveness');
+    },
+    config: (opt) => {
+        return new Promise(resolve => {
+            const subscript = eventEmitter.addEventListener('complete', (data) => {
+                resolve(true);
+                subscript.remove();
             });
-        },
-        LivenessType: SDK.LivenessType,
-    }
-});
+            SDK.config(opt);
+        });
+    },
+    LivenessType: SDK.LivenessType,
+};
 
 export default {
     /**

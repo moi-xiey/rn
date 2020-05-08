@@ -15,7 +15,7 @@
 }
 
 - (NSArray<NSString *> *)supportedEvents {
-    return @[@"complete", @"success"];
+    return @[@"complete"];
 }
 
 + (BOOL)requiresMainQueueSetup {
@@ -65,7 +65,7 @@ RCT_EXPORT_METHOD(liveness)
 RCT_REMAP_METHOD(config, config:(nullable NSDictionary *) config)
 {
     if(config == nil) {
-        [self sendEventWithName:@"success" body:@YES];
+        [self sendEventWithName:@"complete" body:@YES];
         return;
     }
 
@@ -89,7 +89,7 @@ RCT_REMAP_METHOD(config, config:(nullable NSDictionary *) config)
         LivingConfigModel.sharedInstance.numOfLiveness = fmaxl(fminl(count, total), 1);
     }
 
-    [self sendEventWithName:@"success" body:@YES];
+    [self sendEventWithName:@"complete" body:@YES];
 }
 
 @end
