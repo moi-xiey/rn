@@ -85,56 +85,56 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // 初始化相机处理类
     self.videoCapture = [[VideoCaptureDevice alloc] init];
     self.videoCapture.delegate = self;
-    
+
     // 用于播放视频流
     self.detectRect = CGRectMake(ScreenWidth*(1-scaleValue)/2.0, ScreenHeight*(1-scaleValue)/2.0, ScreenWidth*scaleValue, ScreenHeight*scaleValue);
     self.displayImageView = [[UIImageView alloc] initWithFrame:self.detectRect];
     self.displayImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:self.displayImageView];
-    
+
     self.coverImage = [ImageUtils getImageResourceForName:@"facecover"];
     CGRect circleRect = [ImageUtils convertRectFrom:CGRectMake(125, 334, 500, 500) imageSize:self.coverImage.size detectRect:ScreenRect];
     self.previewRect = CGRectMake(circleRect.origin.x - circleRect.size.width*(1/scaleValue-1)/2.0, circleRect.origin.y - circleRect.size.height*(1/scaleValue-1)/2.0 - 60, circleRect.size.width/scaleValue, circleRect.size.height/scaleValue);
-    
+
     //画圈
     self.circleView = [[CircleView alloc] initWithFrame:ScreenRect];
     self.circleView.circleRect = circleRect;
     [self.view addSubview:self.circleView];
-    
+
     // 遮罩
     UIImageView* coverImageView = [[UIImageView alloc] initWithFrame:ScreenRect];
     coverImageView.image = [ImageUtils getImageResourceForName:@"facecover"];
     coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:coverImageView];
-    
+
     //successImage
     self.successImage = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(circleRect)+CGRectGetWidth(circleRect)/2.0-57/2.0, CGRectGetMinY(circleRect)-57/2.0, 57, 57)];
     self.successImage.image = [ImageUtils getImageResourceForName:@"success"];
     [self.view addSubview:self.successImage];
     [self.successImage setHidden:true];
-    
+
     // 关闭
     UIButton* closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [closeButton setImage:[ImageUtils getImageResourceForName:@"close"] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     closeButton.frame = CGRectMake(20, 30, 30, 30);
     [self.view addSubview:closeButton];
-    
+
     // 提示框
     self.remindLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, circleRect.origin.y-70, ScreenWidth, 30)];
     self.remindLabel.textAlignment = NSTextAlignmentCenter;
     self.remindLabel.textColor = OutSideColor;
     self.remindLabel.font = [UIFont boldSystemFontOfSize:22.0];
     [self.view addSubview:self.remindLabel];
-    
+
     self.remindView = [[RemindView alloc]initWithFrame:CGRectMake((ScreenWidth-200)/2.0, CGRectGetMinY(self.remindLabel.frame), 200, 45)];
     [self.view addSubview:self.remindView];
     [self.remindView setHidden:YES];
-    
+
     self.remindDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(circleRect)+20, ScreenWidth, 30)];
     self.remindDetailLabel.font = [UIFont systemFontOfSize:20];
     self.remindDetailLabel.textColor = [UIColor whiteColor];
@@ -142,38 +142,38 @@
     self.remindDetailLabel.text = @"建议略微抬头";
     [self.view addSubview:self.remindDetailLabel];
     [self.remindDetailLabel setHidden:true];
-    
+
     // 监听重新返回APP
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppWillResignAction) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
-    
+
     // 设置最小检测人脸阈值
     [[FaceSDKManager sharedInstance] setMinFaceSize:200];
-    
+
     // 设置截取人脸图片大小
     [[FaceSDKManager sharedInstance] setCropFaceSizeWidth:400];
-    
+
     // 设置人脸遮挡阀值
     [[FaceSDKManager sharedInstance] setOccluThreshold:0.5];
-    
+
     // 设置亮度阀值
     [[FaceSDKManager sharedInstance] setIllumThreshold:40];
-    
+
     // 设置图像模糊阀值
     [[FaceSDKManager sharedInstance] setBlurThreshold:0.7];
-    
+
     // 设置头部姿态角度
     [[FaceSDKManager sharedInstance] setEulurAngleThrPitch:10 yaw:10 roll:10];
-    
+
     // 设置是否进行人脸图片质量检测
     [[FaceSDKManager sharedInstance] setIsCheckQuality:YES];
-    
+
     // 设置超时时间
     [[FaceSDKManager sharedInstance] setConditionTimeout:10];
-    
+
     // 设置人脸检测精度阀值
     [[FaceSDKManager sharedInstance] setNotFaceThreshold:0.6];
-    
+
     // 设置照片采集张数
     [[FaceSDKManager sharedInstance] setMaxCropImageNum:1];
 }
@@ -182,7 +182,7 @@
     [super viewDidDisappear:animated];
     self.hasFinished = YES;
     self.videoCapture.runningStatus = NO;
-    [self.delegate passData:self.data];
+    [self.delegate passData:@{@images: self.data, @success: @YES}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

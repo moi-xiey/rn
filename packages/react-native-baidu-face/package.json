@@ -1,12 +1,13 @@
 {
-  "name": "react-native-baidu-face",
+  "name": "@moi-xiey/react-native-baidu-face",
   "description": "百度人像SDK",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "https://github.com/moi-xiey/rn",
   "author": "moi-xiey",
   "bugs": "https://github.com/moi-xiey/rn/issues",
   "homepage": "https://github.com/moi-xiey/rn",
   "main": "index.js",
+  "types": "index.d.ts",
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.56.0"

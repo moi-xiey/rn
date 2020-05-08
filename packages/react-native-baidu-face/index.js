@@ -5,14 +5,8 @@ const eventEmitter = new NativeEventEmitter(SDK);
 
 const doCapture = (method) => {
     return new Promise(resolve => {
-        const subscript = eventEmitter.addEventListener('complete', (data) => {
-            if (!data) {
-                resolve({ success: false });
-                subscript.remove();
-                return;
-            }
-            data.bestImage0 = Array.isArray(data.bestImage) ? data.bestImage[0] : '';
-            resolve({ success: !!data.success, images: data });
+        const subscript = eventEmitter.addListener('complete', (data) => {
+            resolve(data);
             subscript.remove();
         });
         SDK[method]();
@@ -28,7 +22,7 @@ const BaiduFace = {
     },
     config: (opt) => {
         return new Promise(resolve => {
-            const subscript = eventEmitter.addEventListener('complete', (data) => {
+            const subscript = eventEmitter.addListener('complete', (data) => {
                 resolve(true);
                 subscript.remove();
             });

@@ -65,7 +65,7 @@ RCT_EXPORT_METHOD(liveness)
 RCT_REMAP_METHOD(config, config:(nullable NSDictionary *) config)
 {
     if(config == nil) {
-        [self sendEventWithName:@"complete" body:@YES];
+        [self sendEventWithName:@"complete" body:@{@"success": @YES}];
         return;
     }
 
@@ -89,7 +89,7 @@ RCT_REMAP_METHOD(config, config:(nullable NSDictionary *) config)
         LivingConfigModel.sharedInstance.numOfLiveness = fmaxl(fminl(count, total), 1);
     }
 
-    [self sendEventWithName:@"complete" body:@YES];
+    [self sendEventWithName:@"complete" body:@{@"success": @YES}];
 }
 
 @end

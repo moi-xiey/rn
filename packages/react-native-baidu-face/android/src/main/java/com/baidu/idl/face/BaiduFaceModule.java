@@ -92,7 +92,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
      * 打开人像自动检测拍照
      */
     @ReactMethod
-    public void detect(Promise promise) {
+    public void detect() {
         startActivityForResult(FaceDetectExpActivity.class, REQUEST_DETECT_CODE);
     }
 
@@ -100,7 +100,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
      * 打开活体检测
      */
     @ReactMethod
-    public void liveness(Promise promise) {
+    public void liveness() {
         startActivityForResult(FaceLivenessExpActivity.class, REQUEST_LIVENESS_CODE);
     }
 
@@ -108,7 +108,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
      * 打开活体检测设置
      */
     @ReactMethod
-    public void setting(Promise promise) {
+    public void setting() {
         startActivityForResult(SettingsActivity.class, REQUEST_SETTING_CODE);
     }
 
@@ -116,7 +116,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
      * 配置项
      */
     @ReactMethod
-    public void config(ReadableMap config, Promise promise) {
+    public void config(ReadableMap config) {
         try {
             if (config.hasKey(LIVENESS_RANDOM) && config.getType(LIVENESS_RANDOM).equals(ReadableType.Boolean)) {
                 Boolean livenessRandom = config.getBoolean(LIVENESS_RANDOM);
@@ -143,9 +143,11 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
                 Integer count = config.getInt(LIVENESS_RANDOM_COUNT);
                 faceConfig.setLivenessRandomCount(count);
             }
-            promise.resolve(true);
+            WritableMap result = Arguments.createMap();
+            result.putBoolean("success", true);
+            sendEvent("complete", result);
         } catch (Exception ignore) {
-            promise.reject("error", "配置错误");
+            sendFailEvent();
         }
 
     }
@@ -161,7 +163,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
     }
 
     private void sendEvent(String eventName, @Nullable WritableMap params) {
-        if (!context) {
+        if (null == context) {
             return;
         }
         context.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
@@ -170,6 +172,6 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
     private void sendFailEvent() {
         WritableMap result = Arguments.createMap();
         result.putBoolean("success", false);
-        sendEvent('complete', result);
+        sendEvent("complete", result);
     }
 }
