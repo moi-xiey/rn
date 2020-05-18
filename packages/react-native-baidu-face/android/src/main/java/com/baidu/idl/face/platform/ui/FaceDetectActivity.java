@@ -157,7 +157,12 @@ public class FaceDetectActivity extends Activity implements
         if (mTipsTopView != null) {
             mTipsTopView.setText(R.string.detect_face_in);
         }
-        startPreview();
+        try {
+            startPreview();
+        } catch (Exception e) {
+            e.printStackTrace();
+            onDetectCompletion(FaceStatusEnum.Error_StartPreview, "相机初始化失败", null);
+        }
     }
 
     @Override
@@ -361,7 +366,12 @@ public class FaceDetectActivity extends Activity implements
         if (holder.getSurface() == null) {
             return;
         }
-        startPreview();
+        try {
+            startPreview();
+        } catch (Exception e) {
+            e.printStackTrace();
+            onDetectCompletion(FaceStatusEnum.Error_StartPreview, "相机初始化失败", null);
+        }
     }
 
     @Override

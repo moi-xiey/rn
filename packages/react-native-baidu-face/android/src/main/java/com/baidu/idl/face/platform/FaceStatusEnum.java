@@ -46,5 +46,6 @@ public enum FaceStatusEnum {
     Error_Param,
     Error_Image,
     Error_Detect,
-    Error_Liveness
+    Error_Liveness,
+    Error_StartPreview
 }

@@ -28,7 +28,9 @@ public class FaceLivenessExpActivity extends FaceLivenessActivity {
             finish();
         } else if (status == FaceStatusEnum.Error_DetectTimeout ||
                 status == FaceStatusEnum.Error_LivenessTimeout ||
+                status == FaceStatusEnum.Error_StartPreview ||
                 status == FaceStatusEnum.Error_Timeout) {
+            BaiduFaceModule.message = message;
             finish();
         }
     }

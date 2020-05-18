@@ -28,9 +28,11 @@ public class FaceDetectExpActivity extends FaceDetectActivity {
             finish();
         } else if (status == FaceStatusEnum.Error_DetectTimeout ||
                 status == FaceStatusEnum.Error_LivenessTimeout ||
+                status == FaceStatusEnum.Error_StartPreview ||
                 status == FaceStatusEnum.Error_Timeout) {
             success = false;
             images = new HashMap<>();
+            BaiduFaceModule.message = message;
             finish();
         }
     }

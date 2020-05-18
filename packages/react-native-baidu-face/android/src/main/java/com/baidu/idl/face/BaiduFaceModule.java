@@ -31,6 +31,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
     private ReactApplicationContext context;
     private FaceConfig faceConfig;
 
+    public static String message = "";
     public static HashMap<String, String> images = null;
 
     public BaiduFaceModule(ReactApplicationContext reactContext) {
@@ -51,6 +52,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
             WritableMap result = Arguments.createMap();
             if (null != data) {
                 Boolean success = data.getBooleanExtra("success", false);
+                result.putString("message", message);
                 result.putBoolean("success", success);
             }
             if (null != images) {
@@ -61,6 +63,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
                 result.putMap("images", imageData);
             }
             images = null;
+            message = "";
             sendEvent("complete", result);
         } catch (Exception ignore) {
             sendFailEvent();
@@ -154,6 +157,7 @@ public class BaiduFaceModule extends ReactContextBaseJavaModule implements Activ
 
     private void startActivityForResult(Class<?> cls, int code) {
         images = null;
+        message = "";
         Intent intent = new Intent(context, cls);
         try {
             context.startActivityForResult(intent, code, null);
