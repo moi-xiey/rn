@@ -1,15 +1,9 @@
-//
-//  BaiduFace.h
-//  BaiduFace
-//
-//  Created by xieyang on 2018/8/3.
-//  Copyright © 2018 Facebook. All rights reserved.
-//
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
+#import "PassDataDelegate.h"
 
-#import <Foundation/Foundation.h>
+@interface BaiduFace : RCTEventEmitter <RCTBridgeModule, PassDataDelegate>
 
-@interface BaiduFace : NSObject
-
-+ (void)initSDK;
+@property (nonatomic, readwrite, assign) BOOL mIsInitSuccess;
 
 @end

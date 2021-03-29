@@ -13,27 +13,48 @@
     <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
 
-    <application>
+    <application android:label="@string/app_name">
         <!-- 人脸跟踪采集界面 -->
         <activity
-                android:name="com.baidu.idl.face.activity.FaceDetectExpActivity"
-                android:hardwareAccelerated="true"
-                android:launchMode="singleTop"
-                android:screenOrientation="portrait"
-                android:theme="@style/Theme_NoTitle"/>
+          android:name="com.baidu.idl.face.activity.FaceDetectExpActivity"
+          android:hardwareAccelerated="true"
+          android:launchMode="singleTop"
+          android:screenOrientation="portrait"
+          android:theme="@style/AppTheme"/>
         <!-- 活体图像采集界面 -->
         <activity
-                android:name="com.baidu.idl.face.activity.FaceLivenessExpActivity"
-                android:hardwareAccelerated="true"
-                android:launchMode="singleTop"
-                android:screenOrientation="portrait"
-                android:theme="@style/Theme_NoTitle"/>
-        <!-- 设置相关 -->
-        <activity
-                android:name="com.baidu.idl.face.activity.SettingsActivity"
-                android:hardwareAccelerated="true"
-                android:launchMode="singleTop"
-                android:screenOrientation="portrait"
-                android:theme="@style/Theme_NoTitle"/>
+          android:name="com.baidu.idl.face.activity.FaceLivenessExpActivity"
+          android:hardwareAccelerated="true"
+          android:launchMode="singleTop"
+          android:screenOrientation="portrait"
+          android:theme="@style/AppTheme"/>
+
+        <!--安全设备指纹接入 start-->
+        <receiver android:name="com.baidu.liantian.LiantianReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.baidu.action.Liantian.VIEW" />
+                <category android:name="com.baidu.category.liantian"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <provider android:authorities="${applicationId}.liantian.ac.provider" android:name="com.baidu.liantian.LiantianProvider" android:exported="true"/>
+
+        <service
+          android:name="com.baidu.liantian.LiantianService"
+          android:exported="false">
+            <intent-filter>
+                <action android:name="com.baidu.action.Liantian.VIEW" />
+                <category android:name="com.baidu.category.liantian"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="seckey_avscan" android:value="660346260f8a841a04ec2a56815b421b"/>
+        <meta-data android:name="appkey_avscan" android:value="100034"/>
+        <!--安全设备指纹接入 end-->
     </application>
+
 </manifest>

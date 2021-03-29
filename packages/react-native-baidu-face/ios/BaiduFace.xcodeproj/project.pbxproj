@@ -3,22 +3,48 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0ACE217E2112D71F00E5F126 /* VideoCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21672112D71F00E5F126 /* VideoCaptureDevice.m */; };
-		0ACE217F2112D71F00E5F126 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21692112D71F00E5F126 /* ImageUtils.m */; };
-		0ACE21802112D71F00E5F126 /* LivingConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE216D2112D71F00E5F126 /* LivingConfigModel.m */; };
-		0ACE21812112D71F00E5F126 /* DetectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21702112D71F00E5F126 /* DetectionViewController.m */; };
-		0ACE21822112D71F00E5F126 /* LivenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21712112D71F00E5F126 /* LivenessViewController.m */; };
-		0ACE21832112D71F00E5F126 /* FaceBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21732112D71F00E5F126 /* FaceBaseViewController.m */; };
-		0ACE21842112D71F00E5F126 /* RemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21742112D71F00E5F126 /* RemindView.m */; };
-		0ACE21852112D71F00E5F126 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21752112D71F00E5F126 /* CircleView.m */; };
-		0ACE21862112D71F00E5F126 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21762112D71F00E5F126 /* ViewController.m */; };
-		0ACE21872112D71F00E5F126 /* LivingConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE21792112D71F00E5F126 /* LivingConfigViewController.m */; };
-		0ACE22C821145D9E00E5F126 /* BaiduFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE22C721145D9E00E5F126 /* BaiduFace.m */; };
-		B3E7B58A1CC2AC0600A0062D /* BaiduFaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* BaiduFaceManager.m */; };
+		0A5850EB260448ED00896BC6 /* BaiduFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A585090260448ED00896BC6 /* BaiduFace.m */; };
+		0A5850EC260448ED00896BC6 /* IDLFaceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A585091260448ED00896BC6 /* IDLFaceSDK.framework */; platformFilter = ios; };
+		0A5850ED260448ED00896BC6 /* BDFaceToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A585095260448ED00896BC6 /* BDFaceToastView.m */; };
+		0A5850EE260448ED00896BC6 /* UIColor+BDFaceColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A585096260448ED00896BC6 /* UIColor+BDFaceColorUtils.m */; };
+		0A5850EF260448ED00896BC6 /* BDFaceCalculateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A58509A260448ED00896BC6 /* BDFaceCalculateTool.m */; };
+		0A5850F0260448ED00896BC6 /* BDFaceAdjustParamsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A58509D260448ED00896BC6 /* BDFaceAdjustParamsController.m */; };
+		0A5850F1260448ED00896BC6 /* BDFaceAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A58509E260448ED00896BC6 /* BDFaceAlertController.m */; };
+		0A5850F2260448ED00896BC6 /* BDFaceAdjustParamsRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A58509F260448ED00896BC6 /* BDFaceAdjustParamsRootController.m */; };
+		0A5850F3260448ED00896BC6 /* BDFaceSelectConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850A0260448ED00896BC6 /* BDFaceSelectConfigController.m */; };
+		0A5850F4260448ED00896BC6 /* BDFaceSelectConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850A7260448ED00896BC6 /* BDFaceSelectConfigModel.m */; };
+		0A5850F5260448ED00896BC6 /* BDFaceAdjustParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850A8260448ED00896BC6 /* BDFaceAdjustParamsModel.m */; };
+		0A5850F6260448ED00896BC6 /* BDFaceAdjustParamsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850A9260448ED00896BC6 /* BDFaceAdjustParamsItem.m */; };
+		0A5850F7260448ED00896BC6 /* BDFaceAdjustParamsConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850AA260448ED00896BC6 /* BDFaceAdjustParamsConstants.m */; };
+		0A5850F8260448ED00896BC6 /* BDFaceAdjustParamsFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850AB260448ED00896BC6 /* BDFaceAdjustParamsFileManager.m */; };
+		0A5850F9260448ED00896BC6 /* BDFaceSelectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850AC260448ED00896BC6 /* BDFaceSelectItem.m */; };
+		0A5850FA260448ED00896BC6 /* BDFaceAdjustParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850AD260448ED00896BC6 /* BDFaceAdjustParams.m */; };
+		0A5850FB260448ED00896BC6 /* BDFaceAdjustParamsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850B7260448ED00896BC6 /* BDFaceAdjustParamsCell.m */; };
+		0A5850FC260448ED00896BC6 /* BDFaceAdjustParamsRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850B8260448ED00896BC6 /* BDFaceAdjustParamsRootCell.m */; };
+		0A5850FD260448ED00896BC6 /* BDFaceSelectConfigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850BA260448ED00896BC6 /* BDFaceSelectConfigCell.m */; };
+		0A5850FE260448ED00896BC6 /* BDFaceSelectRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850BB260448ED00896BC6 /* BDFaceSelectRadio.m */; };
+		0A5850FF260448ED00896BC6 /* BDFaceAdjustParamsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850BF260448ED00896BC6 /* BDFaceAdjustParamsTool.m */; };
+		0A585100260448ED00896BC6 /* BDFaceLivingConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850C1260448ED00896BC6 /* BDFaceLivingConfigViewController.m */; };
+		0A585101260448ED00896BC6 /* BDFaceSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850C2260448ED00896BC6 /* BDFaceSuccessViewController.m */; };
+		0A585102260448ED00896BC6 /* BDFaceLivenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850C5260448ED00896BC6 /* BDFaceLivenessViewController.m */; };
+		0A585103260448ED00896BC6 /* BDFaceAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850C8260448ED00896BC6 /* BDFaceAgreementViewController.m */; };
+		0A585104260448ED00896BC6 /* BDFaceDetectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850C9260448ED00896BC6 /* BDFaceDetectionViewController.m */; };
+		0A585105260448ED00896BC6 /* BDFaceBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850CC260448ED00896BC6 /* BDFaceBaseViewController.m */; };
+		0A585106260448ED00896BC6 /* BDFaceCycleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850CE260448ED00896BC6 /* BDFaceCycleProgressView.m */; };
+		0A585107260448ED00896BC6 /* BDFaceRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850CF260448ED00896BC6 /* BDFaceRemindView.m */; };
+		0A585108260448ED00896BC6 /* BDFaceCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850D0260448ED00896BC6 /* BDFaceCircleView.m */; };
+		0A585109260448ED00896BC6 /* BDFaceImageShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850D3260448ED00896BC6 /* BDFaceImageShow.m */; };
+		0A58510A260448ED00896BC6 /* BDFaceRemindAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850D7260448ED00896BC6 /* BDFaceRemindAnimationView.m */; };
+		0A58510B260448ED00896BC6 /* BDFaceLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850D8260448ED00896BC6 /* BDFaceLogoView.m */; };
+		0A58510C260448ED00896BC6 /* BDFaceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850DD260448ED00896BC6 /* BDFaceDevice.m */; };
+		0A58510D260448ED00896BC6 /* BDFaceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850DF260448ED00896BC6 /* BDFaceImageUtils.m */; };
+		0A58510E260448ED00896BC6 /* BDFaceVideoCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850E3260448ED00896BC6 /* BDFaceVideoCaptureDevice.m */; };
+		0A58510F260448ED00896BC6 /* BDFaceLivingConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850E7260448ED00896BC6 /* BDFaceLivingConfigModel.m */; };
+		0A585110260448ED00896BC6 /* BDFaceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5850E9260448ED00896BC6 /* BDFaceLog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,33 +60,84 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0ABE89B6211BEFFC00899E36 /* PassDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassDataDelegate.h; sourceTree = "<group>"; };
-		0ACE21662112D71F00E5F126 /* VideoCaptureDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureDevice.h; sourceTree = "<group>"; };
-		0ACE21672112D71F00E5F126 /* VideoCaptureDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCaptureDevice.m; sourceTree = "<group>"; };
-		0ACE21692112D71F00E5F126 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
-		0ACE216A2112D71F00E5F126 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
-		0ACE216B2112D71F00E5F126 /* FaceParameterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceParameterConfig.h; sourceTree = "<group>"; };
-		0ACE216D2112D71F00E5F126 /* LivingConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingConfigModel.m; sourceTree = "<group>"; };
-		0ACE216E2112D71F00E5F126 /* LivingConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingConfigModel.h; sourceTree = "<group>"; };
-		0ACE21702112D71F00E5F126 /* DetectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionViewController.m; sourceTree = "<group>"; };
-		0ACE21712112D71F00E5F126 /* LivenessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivenessViewController.m; sourceTree = "<group>"; };
-		0ACE21722112D71F00E5F126 /* LivingConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingConfigViewController.h; sourceTree = "<group>"; };
-		0ACE21732112D71F00E5F126 /* FaceBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceBaseViewController.m; sourceTree = "<group>"; };
-		0ACE21742112D71F00E5F126 /* RemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindView.m; sourceTree = "<group>"; };
-		0ACE21752112D71F00E5F126 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
-		0ACE21762112D71F00E5F126 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0ACE21772112D71F00E5F126 /* DetectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionViewController.h; sourceTree = "<group>"; };
-		0ACE21782112D71F00E5F126 /* FaceBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceBaseViewController.h; sourceTree = "<group>"; };
-		0ACE21792112D71F00E5F126 /* LivingConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingConfigViewController.m; sourceTree = "<group>"; };
-		0ACE217A2112D71F00E5F126 /* LivenessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivenessViewController.h; sourceTree = "<group>"; };
-		0ACE217B2112D71F00E5F126 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
-		0ACE217C2112D71F00E5F126 /* RemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindView.h; sourceTree = "<group>"; };
-		0ACE217D2112D71F00E5F126 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0ACE22C621145D9E00E5F126 /* BaiduFace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaiduFace.h; sourceTree = "<group>"; };
-		0ACE22C721145D9E00E5F126 /* BaiduFace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduFace.m; sourceTree = "<group>"; };
+		0A58508F260448ED00896BC6 /* BaiduFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduFace.h; sourceTree = "<group>"; };
+		0A585090260448ED00896BC6 /* BaiduFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduFace.m; sourceTree = "<group>"; };
+		0A585091260448ED00896BC6 /* IDLFaceSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IDLFaceSDK.framework; sourceTree = "<group>"; };
+		0A585095260448ED00896BC6 /* BDFaceToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceToastView.m; sourceTree = "<group>"; };
+		0A585096260448ED00896BC6 /* UIColor+BDFaceColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BDFaceColorUtils.m"; sourceTree = "<group>"; };
+		0A585097260448ED00896BC6 /* BDFaceCalculateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceCalculateTool.h; sourceTree = "<group>"; };
+		0A585098260448ED00896BC6 /* UIColor+BDFaceColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BDFaceColorUtils.h"; sourceTree = "<group>"; };
+		0A585099260448ED00896BC6 /* BDFaceToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceToastView.h; sourceTree = "<group>"; };
+		0A58509A260448ED00896BC6 /* BDFaceCalculateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceCalculateTool.m; sourceTree = "<group>"; };
+		0A58509D260448ED00896BC6 /* BDFaceAdjustParamsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsController.m; sourceTree = "<group>"; };
+		0A58509E260448ED00896BC6 /* BDFaceAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAlertController.m; sourceTree = "<group>"; };
+		0A58509F260448ED00896BC6 /* BDFaceAdjustParamsRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsRootController.m; sourceTree = "<group>"; };
+		0A5850A0260448ED00896BC6 /* BDFaceSelectConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectConfigController.m; sourceTree = "<group>"; };
+		0A5850A1260448ED00896BC6 /* BDFaceAdjustParamsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsController.h; sourceTree = "<group>"; };
+		0A5850A2260448ED00896BC6 /* BDFaceAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAlertController.h; sourceTree = "<group>"; };
+		0A5850A3260448ED00896BC6 /* BDFaceAdjustParamsRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsRootController.h; sourceTree = "<group>"; };
+		0A5850A4260448ED00896BC6 /* BDFaceSelectConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectConfigController.h; sourceTree = "<group>"; };
+		0A5850A6260448ED00896BC6 /* BDFaceAdjustParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParams.h; sourceTree = "<group>"; };
+		0A5850A7260448ED00896BC6 /* BDFaceSelectConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectConfigModel.m; sourceTree = "<group>"; };
+		0A5850A8260448ED00896BC6 /* BDFaceAdjustParamsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsModel.m; sourceTree = "<group>"; };
+		0A5850A9260448ED00896BC6 /* BDFaceAdjustParamsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsItem.m; sourceTree = "<group>"; };
+		0A5850AA260448ED00896BC6 /* BDFaceAdjustParamsConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsConstants.m; sourceTree = "<group>"; };
+		0A5850AB260448ED00896BC6 /* BDFaceAdjustParamsFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsFileManager.m; sourceTree = "<group>"; };
+		0A5850AC260448ED00896BC6 /* BDFaceSelectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectItem.m; sourceTree = "<group>"; };
+		0A5850AD260448ED00896BC6 /* BDFaceAdjustParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParams.m; sourceTree = "<group>"; };
+		0A5850AE260448ED00896BC6 /* BDFaceSelectConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectConfigModel.h; sourceTree = "<group>"; };
+		0A5850AF260448ED00896BC6 /* BDFaceAdjustParamsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsItem.h; sourceTree = "<group>"; };
+		0A5850B0260448ED00896BC6 /* BDFaceAdjustParamsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsModel.h; sourceTree = "<group>"; };
+		0A5850B1260448ED00896BC6 /* BDFaceSelectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectItem.h; sourceTree = "<group>"; };
+		0A5850B2260448ED00896BC6 /* BDFaceAdjustParamsFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsFileManager.h; sourceTree = "<group>"; };
+		0A5850B3260448ED00896BC6 /* BDFaceAdjustParamsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsConstants.h; sourceTree = "<group>"; };
+		0A5850B5260448ED00896BC6 /* BDFaceSelectRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectRadio.h; sourceTree = "<group>"; };
+		0A5850B6260448ED00896BC6 /* BDFaceSelectConfigCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectConfigCell.h; sourceTree = "<group>"; };
+		0A5850B7260448ED00896BC6 /* BDFaceAdjustParamsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsCell.m; sourceTree = "<group>"; };
+		0A5850B8260448ED00896BC6 /* BDFaceAdjustParamsRootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsRootCell.m; sourceTree = "<group>"; };
+		0A5850B9260448ED00896BC6 /* BDFaceAdjustParamsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsCell.h; sourceTree = "<group>"; };
+		0A5850BA260448ED00896BC6 /* BDFaceSelectConfigCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectConfigCell.m; sourceTree = "<group>"; };
+		0A5850BB260448ED00896BC6 /* BDFaceSelectRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectRadio.m; sourceTree = "<group>"; };
+		0A5850BC260448ED00896BC6 /* BDFaceAdjustParamsRootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsRootCell.h; sourceTree = "<group>"; };
+		0A5850BE260448ED00896BC6 /* BDFaceAdjustParamsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsTool.h; sourceTree = "<group>"; };
+		0A5850BF260448ED00896BC6 /* BDFaceAdjustParamsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsTool.m; sourceTree = "<group>"; };
+		0A5850C1260448ED00896BC6 /* BDFaceLivingConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLivingConfigViewController.m; sourceTree = "<group>"; };
+		0A5850C2260448ED00896BC6 /* BDFaceSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSuccessViewController.m; sourceTree = "<group>"; };
+		0A5850C3260448ED00896BC6 /* BDFaceDetectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceDetectionViewController.h; sourceTree = "<group>"; };
+		0A5850C4260448ED00896BC6 /* BDFaceAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAgreementViewController.h; sourceTree = "<group>"; };
+		0A5850C5260448ED00896BC6 /* BDFaceLivenessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLivenessViewController.m; sourceTree = "<group>"; };
+		0A5850C6260448ED00896BC6 /* BDFaceBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceBaseViewController.h; sourceTree = "<group>"; };
+		0A5850C7260448ED00896BC6 /* BDFaceLivingConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLivingConfigViewController.h; sourceTree = "<group>"; };
+		0A5850C8260448ED00896BC6 /* BDFaceAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAgreementViewController.m; sourceTree = "<group>"; };
+		0A5850C9260448ED00896BC6 /* BDFaceDetectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceDetectionViewController.m; sourceTree = "<group>"; };
+		0A5850CA260448ED00896BC6 /* BDFaceSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSuccessViewController.h; sourceTree = "<group>"; };
+		0A5850CB260448ED00896BC6 /* BDFaceLivenessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLivenessViewController.h; sourceTree = "<group>"; };
+		0A5850CC260448ED00896BC6 /* BDFaceBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceBaseViewController.m; sourceTree = "<group>"; };
+		0A5850CE260448ED00896BC6 /* BDFaceCycleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceCycleProgressView.m; sourceTree = "<group>"; };
+		0A5850CF260448ED00896BC6 /* BDFaceRemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceRemindView.m; sourceTree = "<group>"; };
+		0A5850D0260448ED00896BC6 /* BDFaceCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceCircleView.m; sourceTree = "<group>"; };
+		0A5850D1260448ED00896BC6 /* BDFaceLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLogoView.h; sourceTree = "<group>"; };
+		0A5850D2260448ED00896BC6 /* BDFaceRemindAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceRemindAnimationView.h; sourceTree = "<group>"; };
+		0A5850D3260448ED00896BC6 /* BDFaceImageShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceImageShow.m; sourceTree = "<group>"; };
+		0A5850D4260448ED00896BC6 /* BDFaceCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceCircleView.h; sourceTree = "<group>"; };
+		0A5850D5260448ED00896BC6 /* BDFaceRemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceRemindView.h; sourceTree = "<group>"; };
+		0A5850D6260448ED00896BC6 /* BDFaceCycleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceCycleProgressView.h; sourceTree = "<group>"; };
+		0A5850D7260448ED00896BC6 /* BDFaceRemindAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceRemindAnimationView.m; sourceTree = "<group>"; };
+		0A5850D8260448ED00896BC6 /* BDFaceLogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLogoView.m; sourceTree = "<group>"; };
+		0A5850D9260448ED00896BC6 /* BDFaceImageShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceImageShow.h; sourceTree = "<group>"; };
+		0A5850DA260448ED00896BC6 /* FaceParameterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceParameterConfig.h; sourceTree = "<group>"; };
+		0A5850DD260448ED00896BC6 /* BDFaceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceDevice.m; sourceTree = "<group>"; };
+		0A5850DE260448ED00896BC6 /* PassDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassDataDelegate.h; sourceTree = "<group>"; };
+		0A5850DF260448ED00896BC6 /* BDFaceImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceImageUtils.m; sourceTree = "<group>"; };
+		0A5850E0260448ED00896BC6 /* BDFaceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceDevice.h; sourceTree = "<group>"; };
+		0A5850E1260448ED00896BC6 /* BDFaceImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceImageUtils.h; sourceTree = "<group>"; };
+		0A5850E3260448ED00896BC6 /* BDFaceVideoCaptureDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceVideoCaptureDevice.m; sourceTree = "<group>"; };
+		0A5850E4260448ED00896BC6 /* BDFaceVideoCaptureDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceVideoCaptureDevice.h; sourceTree = "<group>"; };
+		0A5850E6260448ED00896BC6 /* BDFaceLivingConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLivingConfigModel.h; sourceTree = "<group>"; };
+		0A5850E7260448ED00896BC6 /* BDFaceLivingConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLivingConfigModel.m; sourceTree = "<group>"; };
+		0A5850E9260448ED00896BC6 /* BDFaceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLog.m; sourceTree = "<group>"; };
+		0A5850EA260448ED00896BC6 /* BDFaceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLog.h; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libBaiduFace.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBaiduFace.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* BaiduFaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduFaceManager.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* BaiduFaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduFaceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,71 +145,204 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5850EC260448ED00896BC6 /* IDLFaceSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0ACE21642112D71F00E5F126 /* RCTBaiduFaceSDK */ = {
+		0A585092260448ED00896BC6 /* BDFaceFaceSDKUI */ = {
 			isa = PBXGroup;
 			children = (
-				0ACE21652112D71F00E5F126 /* Core */,
-				0ACE21682112D71F00E5F126 /* Utils */,
-				0ACE216B2112D71F00E5F126 /* FaceParameterConfig.h */,
-				0ACE216C2112D71F00E5F126 /* Model */,
-				0ACE216F2112D71F00E5F126 /* ViewController */,
+				0A585093260448ED00896BC6 /* UI */,
+				0A5850DA260448ED00896BC6 /* FaceParameterConfig.h */,
+				0A5850DB260448ED00896BC6 /* Public */,
+				0A5850E8260448ED00896BC6 /* Log */,
 			);
-			path = RCTBaiduFaceSDK;
+			path = BDFaceFaceSDKUI;
 			sourceTree = "<group>";
 		};
-		0ACE21652112D71F00E5F126 /* Core */ = {
+		0A585093260448ED00896BC6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0ACE21662112D71F00E5F126 /* VideoCaptureDevice.h */,
-				0ACE21672112D71F00E5F126 /* VideoCaptureDevice.m */,
+				0A585094260448ED00896BC6 /* BDFaceTools */,
+				0A58509B260448ED00896BC6 /* BDFaceAdjustParams */,
+				0A5850BD260448ED00896BC6 /* Interface */,
+				0A5850C0260448ED00896BC6 /* Controller */,
+				0A5850CD260448ED00896BC6 /* View */,
 			);
-			path = Core;
+			path = UI;
 			sourceTree = "<group>";
 		};
-		0ACE21682112D71F00E5F126 /* Utils */ = {
+		0A585094260448ED00896BC6 /* BDFaceTools */ = {
 			isa = PBXGroup;
 			children = (
-				0ABE89B6211BEFFC00899E36 /* PassDataDelegate.h */,
-				0ACE21692112D71F00E5F126 /* ImageUtils.m */,
-				0ACE216A2112D71F00E5F126 /* ImageUtils.h */,
+				0A585095260448ED00896BC6 /* BDFaceToastView.m */,
+				0A585096260448ED00896BC6 /* UIColor+BDFaceColorUtils.m */,
+				0A585097260448ED00896BC6 /* BDFaceCalculateTool.h */,
+				0A585098260448ED00896BC6 /* UIColor+BDFaceColorUtils.h */,
+				0A585099260448ED00896BC6 /* BDFaceToastView.h */,
+				0A58509A260448ED00896BC6 /* BDFaceCalculateTool.m */,
 			);
-			path = Utils;
+			path = BDFaceTools;
 			sourceTree = "<group>";
 		};
-		0ACE216C2112D71F00E5F126 /* Model */ = {
+		0A58509B260448ED00896BC6 /* BDFaceAdjustParams */ = {
 			isa = PBXGroup;
 			children = (
-				0ACE216D2112D71F00E5F126 /* LivingConfigModel.m */,
-				0ACE216E2112D71F00E5F126 /* LivingConfigModel.h */,
+				0A58509C260448ED00896BC6 /* Controller */,
+				0A5850A5260448ED00896BC6 /* Model */,
+				0A5850B4260448ED00896BC6 /* View */,
+			);
+			path = BDFaceAdjustParams;
+			sourceTree = "<group>";
+		};
+		0A58509C260448ED00896BC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A58509D260448ED00896BC6 /* BDFaceAdjustParamsController.m */,
+				0A58509E260448ED00896BC6 /* BDFaceAlertController.m */,
+				0A58509F260448ED00896BC6 /* BDFaceAdjustParamsRootController.m */,
+				0A5850A0260448ED00896BC6 /* BDFaceSelectConfigController.m */,
+				0A5850A1260448ED00896BC6 /* BDFaceAdjustParamsController.h */,
+				0A5850A2260448ED00896BC6 /* BDFaceAlertController.h */,
+				0A5850A3260448ED00896BC6 /* BDFaceAdjustParamsRootController.h */,
+				0A5850A4260448ED00896BC6 /* BDFaceSelectConfigController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0A5850A5260448ED00896BC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850A6260448ED00896BC6 /* BDFaceAdjustParams.h */,
+				0A5850A7260448ED00896BC6 /* BDFaceSelectConfigModel.m */,
+				0A5850A8260448ED00896BC6 /* BDFaceAdjustParamsModel.m */,
+				0A5850A9260448ED00896BC6 /* BDFaceAdjustParamsItem.m */,
+				0A5850AA260448ED00896BC6 /* BDFaceAdjustParamsConstants.m */,
+				0A5850AB260448ED00896BC6 /* BDFaceAdjustParamsFileManager.m */,
+				0A5850AC260448ED00896BC6 /* BDFaceSelectItem.m */,
+				0A5850AD260448ED00896BC6 /* BDFaceAdjustParams.m */,
+				0A5850AE260448ED00896BC6 /* BDFaceSelectConfigModel.h */,
+				0A5850AF260448ED00896BC6 /* BDFaceAdjustParamsItem.h */,
+				0A5850B0260448ED00896BC6 /* BDFaceAdjustParamsModel.h */,
+				0A5850B1260448ED00896BC6 /* BDFaceSelectItem.h */,
+				0A5850B2260448ED00896BC6 /* BDFaceAdjustParamsFileManager.h */,
+				0A5850B3260448ED00896BC6 /* BDFaceAdjustParamsConstants.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0ACE216F2112D71F00E5F126 /* ViewController */ = {
+		0A5850B4260448ED00896BC6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0ACE21702112D71F00E5F126 /* DetectionViewController.m */,
-				0ACE21712112D71F00E5F126 /* LivenessViewController.m */,
-				0ACE21722112D71F00E5F126 /* LivingConfigViewController.h */,
-				0ACE21732112D71F00E5F126 /* FaceBaseViewController.m */,
-				0ACE21742112D71F00E5F126 /* RemindView.m */,
-				0ACE21752112D71F00E5F126 /* CircleView.m */,
-				0ACE21762112D71F00E5F126 /* ViewController.m */,
-				0ACE21772112D71F00E5F126 /* DetectionViewController.h */,
-				0ACE21782112D71F00E5F126 /* FaceBaseViewController.h */,
-				0ACE21792112D71F00E5F126 /* LivingConfigViewController.m */,
-				0ACE217A2112D71F00E5F126 /* LivenessViewController.h */,
-				0ACE217B2112D71F00E5F126 /* CircleView.h */,
-				0ACE217C2112D71F00E5F126 /* RemindView.h */,
-				0ACE217D2112D71F00E5F126 /* ViewController.h */,
+				0A5850B5260448ED00896BC6 /* BDFaceSelectRadio.h */,
+				0A5850B6260448ED00896BC6 /* BDFaceSelectConfigCell.h */,
+				0A5850B7260448ED00896BC6 /* BDFaceAdjustParamsCell.m */,
+				0A5850B8260448ED00896BC6 /* BDFaceAdjustParamsRootCell.m */,
+				0A5850B9260448ED00896BC6 /* BDFaceAdjustParamsCell.h */,
+				0A5850BA260448ED00896BC6 /* BDFaceSelectConfigCell.m */,
+				0A5850BB260448ED00896BC6 /* BDFaceSelectRadio.m */,
+				0A5850BC260448ED00896BC6 /* BDFaceAdjustParamsRootCell.h */,
 			);
-			path = ViewController;
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A5850BD260448ED00896BC6 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850BE260448ED00896BC6 /* BDFaceAdjustParamsTool.h */,
+				0A5850BF260448ED00896BC6 /* BDFaceAdjustParamsTool.m */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		0A5850C0260448ED00896BC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850C1260448ED00896BC6 /* BDFaceLivingConfigViewController.m */,
+				0A5850C2260448ED00896BC6 /* BDFaceSuccessViewController.m */,
+				0A5850C3260448ED00896BC6 /* BDFaceDetectionViewController.h */,
+				0A5850C4260448ED00896BC6 /* BDFaceAgreementViewController.h */,
+				0A5850C5260448ED00896BC6 /* BDFaceLivenessViewController.m */,
+				0A5850C6260448ED00896BC6 /* BDFaceBaseViewController.h */,
+				0A5850C7260448ED00896BC6 /* BDFaceLivingConfigViewController.h */,
+				0A5850C8260448ED00896BC6 /* BDFaceAgreementViewController.m */,
+				0A5850C9260448ED00896BC6 /* BDFaceDetectionViewController.m */,
+				0A5850CA260448ED00896BC6 /* BDFaceSuccessViewController.h */,
+				0A5850CB260448ED00896BC6 /* BDFaceLivenessViewController.h */,
+				0A5850CC260448ED00896BC6 /* BDFaceBaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0A5850CD260448ED00896BC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850CE260448ED00896BC6 /* BDFaceCycleProgressView.m */,
+				0A5850CF260448ED00896BC6 /* BDFaceRemindView.m */,
+				0A5850D0260448ED00896BC6 /* BDFaceCircleView.m */,
+				0A5850D1260448ED00896BC6 /* BDFaceLogoView.h */,
+				0A5850D2260448ED00896BC6 /* BDFaceRemindAnimationView.h */,
+				0A5850D3260448ED00896BC6 /* BDFaceImageShow.m */,
+				0A5850D4260448ED00896BC6 /* BDFaceCircleView.h */,
+				0A5850D5260448ED00896BC6 /* BDFaceRemindView.h */,
+				0A5850D6260448ED00896BC6 /* BDFaceCycleProgressView.h */,
+				0A5850D7260448ED00896BC6 /* BDFaceRemindAnimationView.m */,
+				0A5850D8260448ED00896BC6 /* BDFaceLogoView.m */,
+				0A5850D9260448ED00896BC6 /* BDFaceImageShow.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A5850DB260448ED00896BC6 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850DC260448ED00896BC6 /* Util */,
+				0A5850E2260448ED00896BC6 /* Common */,
+				0A5850E5260448ED00896BC6 /* Model */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		0A5850DC260448ED00896BC6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850DD260448ED00896BC6 /* BDFaceDevice.m */,
+				0A5850DE260448ED00896BC6 /* PassDataDelegate.h */,
+				0A5850DF260448ED00896BC6 /* BDFaceImageUtils.m */,
+				0A5850E0260448ED00896BC6 /* BDFaceDevice.h */,
+				0A5850E1260448ED00896BC6 /* BDFaceImageUtils.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		0A5850E2260448ED00896BC6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850E3260448ED00896BC6 /* BDFaceVideoCaptureDevice.m */,
+				0A5850E4260448ED00896BC6 /* BDFaceVideoCaptureDevice.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0A5850E5260448ED00896BC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850E6260448ED00896BC6 /* BDFaceLivingConfigModel.h */,
+				0A5850E7260448ED00896BC6 /* BDFaceLivingConfigModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A5850E8260448ED00896BC6 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				0A5850E9260448ED00896BC6 /* BDFaceLog.m */,
+				0A5850EA260448ED00896BC6 /* BDFaceLog.h */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		134814211AA4EA7D00B7C361 /* Products */ = {
@@ -146,11 +356,10 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				0ACE22C621145D9E00E5F126 /* BaiduFace.h */,
-				0ACE22C721145D9E00E5F126 /* BaiduFace.m */,
-				B3E7B5881CC2AC0600A0062D /* BaiduFaceManager.h */,
-				B3E7B5891CC2AC0600A0062D /* BaiduFaceManager.m */,
-				0ACE21642112D71F00E5F126 /* RCTBaiduFaceSDK */,
+				0A58508F260448ED00896BC6 /* BaiduFace.h */,
+				0A585090260448ED00896BC6 /* BaiduFace.m */,
+				0A585092260448ED00896BC6 /* BDFaceFaceSDKUI */,
+				0A585091260448ED00896BC6 /* IDLFaceSDK.framework */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,7 +390,7 @@
 		58B511D31A9E6C8500147676 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
@@ -191,10 +400,11 @@
 			};
 			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "BaiduFace" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
 			productRefGroup = 58B511D21A9E6C8500147676;
@@ -211,18 +421,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0ACE21872112D71F00E5F126 /* LivingConfigViewController.m in Sources */,
-				0ACE217F2112D71F00E5F126 /* ImageUtils.m in Sources */,
-				0ACE22C821145D9E00E5F126 /* BaiduFace.m in Sources */,
-				0ACE21842112D71F00E5F126 /* RemindView.m in Sources */,
-				0ACE21852112D71F00E5F126 /* CircleView.m in Sources */,
-				0ACE217E2112D71F00E5F126 /* VideoCaptureDevice.m in Sources */,
-				0ACE21862112D71F00E5F126 /* ViewController.m in Sources */,
-				0ACE21802112D71F00E5F126 /* LivingConfigModel.m in Sources */,
-				0ACE21822112D71F00E5F126 /* LivenessViewController.m in Sources */,
-				0ACE21812112D71F00E5F126 /* DetectionViewController.m in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* BaiduFaceManager.m in Sources */,
-				0ACE21832112D71F00E5F126 /* FaceBaseViewController.m in Sources */,
+				0A585104260448ED00896BC6 /* BDFaceDetectionViewController.m in Sources */,
+				0A585108260448ED00896BC6 /* BDFaceCircleView.m in Sources */,
+				0A5850F4260448ED00896BC6 /* BDFaceSelectConfigModel.m in Sources */,
+				0A585106260448ED00896BC6 /* BDFaceCycleProgressView.m in Sources */,
+				0A585102260448ED00896BC6 /* BDFaceLivenessViewController.m in Sources */,
+				0A58510F260448ED00896BC6 /* BDFaceLivingConfigModel.m in Sources */,
+				0A58510C260448ED00896BC6 /* BDFaceDevice.m in Sources */,
+				0A585107260448ED00896BC6 /* BDFaceRemindView.m in Sources */,
+				0A5850FC260448ED00896BC6 /* BDFaceAdjustParamsRootCell.m in Sources */,
+				0A5850FD260448ED00896BC6 /* BDFaceSelectConfigCell.m in Sources */,
+				0A5850F3260448ED00896BC6 /* BDFaceSelectConfigController.m in Sources */,
+				0A5850EB260448ED00896BC6 /* BaiduFace.m in Sources */,
+				0A585101260448ED00896BC6 /* BDFaceSuccessViewController.m in Sources */,
+				0A5850EF260448ED00896BC6 /* BDFaceCalculateTool.m in Sources */,
+				0A58510B260448ED00896BC6 /* BDFaceLogoView.m in Sources */,
+				0A5850F8260448ED00896BC6 /* BDFaceAdjustParamsFileManager.m in Sources */,
+				0A585100260448ED00896BC6 /* BDFaceLivingConfigViewController.m in Sources */,
+				0A58510E260448ED00896BC6 /* BDFaceVideoCaptureDevice.m in Sources */,
+				0A5850F2260448ED00896BC6 /* BDFaceAdjustParamsRootController.m in Sources */,
+				0A585105260448ED00896BC6 /* BDFaceBaseViewController.m in Sources */,
+				0A5850F7260448ED00896BC6 /* BDFaceAdjustParamsConstants.m in Sources */,
+				0A5850FF260448ED00896BC6 /* BDFaceAdjustParamsTool.m in Sources */,
+				0A5850FB260448ED00896BC6 /* BDFaceAdjustParamsCell.m in Sources */,
+				0A585103260448ED00896BC6 /* BDFaceAgreementViewController.m in Sources */,
+				0A5850FA260448ED00896BC6 /* BDFaceAdjustParams.m in Sources */,
+				0A5850F5260448ED00896BC6 /* BDFaceAdjustParamsModel.m in Sources */,
+				0A5850FE260448ED00896BC6 /* BDFaceSelectRadio.m in Sources */,
+				0A585110260448ED00896BC6 /* BDFaceLog.m in Sources */,
+				0A5850F6260448ED00896BC6 /* BDFaceAdjustParamsItem.m in Sources */,
+				0A58510D260448ED00896BC6 /* BDFaceImageUtils.m in Sources */,
+				0A5850F9260448ED00896BC6 /* BDFaceSelectItem.m in Sources */,
+				0A5850ED260448ED00896BC6 /* BDFaceToastView.m in Sources */,
+				0A5850F1260448ED00896BC6 /* BDFaceAlertController.m in Sources */,
+				0A5850EE260448ED00896BC6 /* UIColor+BDFaceColorUtils.m in Sources */,
+				0A5850F0260448ED00896BC6 /* BDFaceAdjustParamsController.m in Sources */,
+				0A585109260448ED00896BC6 /* BDFaceImageShow.m in Sources */,
+				0A58510A260448ED00896BC6 /* BDFaceRemindAnimationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,18 +468,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -266,7 +510,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -277,18 +530,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -303,7 +565,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -315,10 +586,11 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
@@ -334,10 +606,11 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
