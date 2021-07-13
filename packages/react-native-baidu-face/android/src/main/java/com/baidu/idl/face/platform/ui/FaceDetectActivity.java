@@ -6,51 +6,28 @@ package com.baidu.idl.face.platform.ui;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.PixelFormat;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.baidu.idl.face.platform.FaceConfig;
-import com.baidu.idl.face.platform.FaceSDKManager;
-import com.baidu.idl.face.platform.FaceStatusNewEnum;
-import com.baidu.idl.face.platform.IDetectStrategy;
-import com.baidu.idl.face.platform.IDetectStrategyCallback;
-import com.baidu.idl.face.platform.model.ImageInfo;
-import com.baidu.idl.face.platform.stat.Ast;
-import com.baidu.idl.face.platform.ui.utils.BrightnessUtils;
+import android.view.*;
+import android.widget.*;
+import com.baidu.aip.face.stat.Ast;
+import com.baidu.idl.face.R;
+import com.baidu.idl.face.platform.*;
 import com.baidu.idl.face.platform.ui.utils.CameraUtils;
 import com.baidu.idl.face.platform.ui.utils.VolumeUtils;
 import com.baidu.idl.face.platform.ui.widget.FaceDetectRoundView;
 import com.baidu.idl.face.platform.utils.APIUtils;
 import com.baidu.idl.face.platform.utils.Base64Utils;
-import com.baidu.idl.face.platform.ui.utils.CameraPreviewUtils;
+import com.baidu.idl.face.platform.utils.CameraPreviewUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import com.baidu.idl.face.R;
+import java.util.Set;
 
 /**
  * 人脸采集接口
@@ -63,6 +40,7 @@ public class FaceDetectActivity extends Activity implements
         IDetectStrategyCallback {
 
     public static final String TAG = FaceDetectActivity.class.getSimpleName();
+    public static final String DETECT_CONFIG = "FaceOptions";
 
     // View
     protected View mRootView;
@@ -73,10 +51,9 @@ public class FaceDetectActivity extends Activity implements
     protected ImageView mSoundView;
     protected ImageView mSuccessView;
     protected TextView mTipsTopView;
+    protected TextView mTipsBottomView;
     protected FaceDetectRoundView mFaceDetectRoundView;
     protected LinearLayout mImageLayout;
-    protected LinearLayout mImageLayout2;
-    public View mViewBg;
     // 人脸信息
     protected FaceConfig mFaceConfig;
     protected IDetectStrategy mIDetectStrategy;
@@ -105,7 +82,6 @@ public class FaceDetectActivity extends Activity implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setScreenBright();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_face_detect_v3100);
         DisplayMetrics dm = new DisplayMetrics();
@@ -119,7 +95,7 @@ public class FaceDetectActivity extends Activity implements
 
         AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         int vol = am.getStreamVolume(AudioManager.STREAM_MUSIC);
-        mIsEnableSound = vol > 0 ? mFaceConfig.isSound() : false;
+        mIsEnableSound = vol > 0 ? mFaceConfig.isSound : false;
 
         mRootView = this.findViewById(R.id.detect_root_layout);
         mFrameLayout = (FrameLayout) mRootView.findViewById(R.id.detect_surface_layout);
@@ -148,39 +124,29 @@ public class FaceDetectActivity extends Activity implements
         });
 
         mFaceDetectRoundView = (FaceDetectRoundView) mRootView.findViewById(R.id.detect_face_round);
-        mFaceDetectRoundView.setIsActiveLive(false);
         mCloseView = (ImageView) mRootView.findViewById(R.id.detect_close);
         mSoundView = (ImageView) mRootView.findViewById(R.id.detect_sound);
         mSoundView.setImageResource(mIsEnableSound ?
-                R.mipmap.icon_titlebar_voice2 : R.drawable.collect_image_voice_selector);
+                R.mipmap.ic_enable_sound_ext : R.mipmap.ic_disable_sound_ext);
         mSoundView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mIsEnableSound = !mIsEnableSound;
                 mSoundView.setImageResource(mIsEnableSound ?
-                        R.mipmap.icon_titlebar_voice2 : R.drawable.collect_image_voice_selector);
+                        R.mipmap.ic_enable_sound_ext : R.mipmap.ic_disable_sound_ext);
                 if (mIDetectStrategy != null) {
                     mIDetectStrategy.setDetectStrategySoundEnable(mIsEnableSound);
                 }
             }
         });
         mTipsTopView = (TextView) mRootView.findViewById(R.id.detect_top_tips);
+        mTipsBottomView = (TextView) mRootView.findViewById(R.id.detect_bottom_tips);
         mSuccessView = (ImageView) mRootView.findViewById(R.id.detect_success_image);
 
         mImageLayout = (LinearLayout) mRootView.findViewById(R.id.detect_result_image_layout);
-        mImageLayout2 = (LinearLayout) mRootView.findViewById(R.id.detect_result_image_layout2);
-        mViewBg = findViewById(R.id.view_bg);
         if (mBase64ImageMap != null) {
             mBase64ImageMap.clear();
         }
-    }
-
-    /**
-     * 设置屏幕亮度
-     */
-    private void setScreenBright() {
-        int currentBright = BrightnessUtils.getScreenBrightness(this);
-        BrightnessUtils.setBrightness(this, currentBright + 100);
     }
 
     @Override
@@ -188,27 +154,27 @@ public class FaceDetectActivity extends Activity implements
         super.onResume();
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         mVolumeReceiver = VolumeUtils.registerVolumeReceiver(this, this);
-        if (mFaceDetectRoundView != null) {
-            mFaceDetectRoundView.setTipTopText("请将脸移入取景框");
+        if (mTipsTopView != null) {
+            mTipsTopView.setText(R.string.detect_face_in);
         }
         startPreview();
     }
 
     @Override
     public void onPause() {
-        if (mIDetectStrategy != null) {
-            mIDetectStrategy.reset();
-        }
         super.onPause();
-        VolumeUtils.unRegisterVolumeReceiver(this, mVolumeReceiver);
-        mVolumeReceiver = null;
-        mIsCompletion = false;
         stopPreview();
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        VolumeUtils.unRegisterVolumeReceiver(this, mVolumeReceiver);
+        mVolumeReceiver = null;
+        if (mIDetectStrategy != null) {
+            mIDetectStrategy.reset();
+        }
+        stopPreview();
     }
 
     @Override
@@ -224,7 +190,7 @@ public class FaceDetectActivity extends Activity implements
                 int cv = am.getStreamVolume(AudioManager.STREAM_MUSIC);
                 mIsEnableSound = cv > 0;
                 mSoundView.setImageResource(mIsEnableSound
-                        ? R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice1);
+                        ? R.mipmap.ic_enable_sound_ext : R.mipmap.ic_disable_sound_ext);
                 if (mIDetectStrategy != null) {
                     mIDetectStrategy.setDetectStrategySoundEnable(mIsEnableSound);
                 }
@@ -341,7 +307,6 @@ public class FaceDetectActivity extends Activity implements
             mSurfaceHolder.removeCallback(this);
         }
         if (mIDetectStrategy != null) {
-            mIDetectStrategy.reset();
             mIDetectStrategy = null;
         }
     }
@@ -429,108 +394,95 @@ public class FaceDetectActivity extends Activity implements
     }
 
     @Override
-    public void onDetectCompletion(FaceStatusNewEnum status, String message,
-                                   HashMap<String, ImageInfo> base64ImageCropMap,
-                                   HashMap<String, ImageInfo> base64ImageSrcMap) {
+    public void onDetectCompletion(FaceStatusEnum status, String message,
+                                   HashMap<String, String> base64ImageMap) {
         if (mIsCompletion) {
             return;
         }
 
         onRefreshView(status, message);
 
-        if (status == FaceStatusNewEnum.OK) {
+        if (status == FaceStatusEnum.OK) {
             mIsCompletion = true;
-            // saveAllImage(base64ImageCropMap, base64ImageSrcMap);
+            saveImage(base64ImageMap);
         }
-        // 打点
         Ast.getInstance().faceHit("detect");
     }
 
-    private void onRefreshView(FaceStatusNewEnum status, String message) {
+    private void onRefreshView(FaceStatusEnum status, String message) {
         switch (status) {
             case OK:
-                mFaceDetectRoundView.setTipTopText(message);
-                // onRefreshSuccessView(true);
-                // onRefreshTipsView(false, message);
+                onRefreshTipsView(false, message);
+                mTipsBottomView.setText("");
+                mFaceDetectRoundView.processDrawState(false);
+                onRefreshSuccessView(true);
                 break;
-            case DetectRemindCodePitchOutofUpRange:
-            case DetectRemindCodePitchOutofDownRange:
-            case DetectRemindCodeYawOutofLeftRange:
-            case DetectRemindCodeYawOutofRightRange:
-                mFaceDetectRoundView.setTipTopText(message);
-                // onRefreshTipsView(true, message);
-                // onRefreshSuccessView(false);
+            case Detect_PitchOutOfUpMaxRange:
+            case Detect_PitchOutOfDownMaxRange:
+            case Detect_PitchOutOfLeftMaxRange:
+            case Detect_PitchOutOfRightMaxRange:
+                onRefreshTipsView(true, message);
+                mTipsBottomView.setText(message);
+                mFaceDetectRoundView.processDrawState(true);
+                onRefreshSuccessView(false);
                 break;
             default:
-                mFaceDetectRoundView.setTipTopText(message);
-                // onRefreshTipsView(false, message);
-                // onRefreshSuccessView(false);
+                onRefreshTipsView(false, message);
+                mTipsBottomView.setText("");
+                mFaceDetectRoundView.processDrawState(true);
+                onRefreshSuccessView(false);
         }
     }
 
-    private static Bitmap base64ToBitmap(String base64Data) {
-        byte[] bytes = Base64Utils.decode(base64Data, Base64Utils.NO_WRAP);
-        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-    }
-
-    // ----------------------------------------供调试用----------------------------------------------
-    private void saveAllImage(HashMap<String, ImageInfo> imageCropMap, HashMap<String, ImageInfo> imageSrcMap) {
-        if (imageCropMap != null && imageCropMap.size() > 0) {
-            List<Map.Entry<String, ImageInfo>> list1 = new ArrayList<>(imageCropMap.entrySet());
-            Collections.sort(list1, new Comparator<Map.Entry<String, ImageInfo>>() {
-
-                @Override
-                public int compare(Map.Entry<String, ImageInfo> o1,
-                                   Map.Entry<String, ImageInfo> o2) {
-                    String[] key1 = o1.getKey().split("_");
-                    String score1 = key1[2];
-                    String[] key2 = o2.getKey().split("_");
-                    String score2 = key2[2];
-                    // 降序排序
-                    return Float.valueOf(score2).compareTo(Float.valueOf(score1));
-                }
-            });
-            setImageView1(list1);
-        }
-
-        if (imageSrcMap != null && imageSrcMap.size() > 0) {
-            List<Map.Entry<String, ImageInfo>> list2 = new ArrayList<>(imageSrcMap.entrySet());
-            Collections.sort(list2, new Comparator<Map.Entry<String, ImageInfo>>() {
-
-                @Override
-                public int compare(Map.Entry<String, ImageInfo> o1,
-                                   Map.Entry<String, ImageInfo> o2) {
-                    String[] key1 = o1.getKey().split("_");
-                    String score1 = key1[2];
-                    String[] key2 = o2.getKey().split("_");
-                    String score2 = key2[2];
-                    // 降序排序
-                    return Float.valueOf(score2).compareTo(Float.valueOf(score1));
-                }
-            });
-            setImageView2(list2);
+    private void onRefreshTipsView(boolean isAlert, String message) {
+        if (isAlert) {
+            if (mTipsIcon == null) {
+                mTipsIcon = getResources().getDrawable(R.mipmap.ic_warning);
+                mTipsIcon.setBounds(0, 0, (int) (mTipsIcon.getMinimumWidth() * 0.7f),
+                        (int) (mTipsIcon.getMinimumHeight() * 0.7f));
+                mTipsTopView.setCompoundDrawablePadding(15);
+            }
+            mTipsTopView.setBackgroundResource(R.drawable.bg_tips);
+            mTipsTopView.setText(R.string.detect_standard);
+            mTipsTopView.setCompoundDrawables(mTipsIcon, null, null, null);
+        } else {
+            mTipsTopView.setBackgroundResource(R.drawable.bg_tips_no);
+            mTipsTopView.setCompoundDrawables(null, null, null, null);
+            if (!TextUtils.isEmpty(message)) {
+                mTipsTopView.setText(message);
+            }
         }
     }
 
-    private void setImageView1(List<Map.Entry<String, ImageInfo>> list) {
+    private void onRefreshSuccessView(boolean isShow) {
+        if (mSuccessView.getTag() == null) {
+            Rect rect = mFaceDetectRoundView.getFaceRoundRect();
+            RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) mSuccessView.getLayoutParams();
+            rlp.setMargins(
+                    rect.centerX() - (mSuccessView.getWidth() / 2),
+                    rect.top - (mSuccessView.getHeight() / 2),
+                    0,
+                    0);
+            mSuccessView.setLayoutParams(rlp);
+            mSuccessView.setTag("setlayout");
+        }
+        mSuccessView.setVisibility(isShow ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    private void saveImage(HashMap<String, String> imageMap) {
+        Set<Map.Entry<String, String>> sets = imageMap.entrySet();
         Bitmap bmp = null;
         mImageLayout.removeAllViews();
-        for (Map.Entry<String, ImageInfo> entry : list) {
-            bmp = base64ToBitmap(entry.getValue().getBase64());
+        for (Map.Entry<String, String> entry : sets) {
+            bmp = base64ToBitmap(entry.getValue());
             ImageView iv = new ImageView(this);
             iv.setImageBitmap(bmp);
             mImageLayout.addView(iv, new LinearLayout.LayoutParams(300, 300));
         }
     }
 
-    private void setImageView2(List<Map.Entry<String, ImageInfo>> list) {
-        Bitmap bmp = null;
-        mImageLayout2.removeAllViews();
-        for (Map.Entry<String, ImageInfo> entry : list) {
-            bmp = base64ToBitmap(entry.getValue().getBase64());
-            ImageView iv = new ImageView(this);
-            iv.setImageBitmap(bmp);
-            mImageLayout2.addView(iv, new LinearLayout.LayoutParams(300, 300));
-        }
+    private static Bitmap base64ToBitmap(String base64Data) {
+        byte[] bytes = Base64Utils.decode(base64Data, Base64Utils.NO_WRAP);
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 }
