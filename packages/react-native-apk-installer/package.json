@@ -1,6 +1,6 @@
 {
   "name": "@moi-xiey/react-native-apk-installer",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "A react-native library to install APK on Android",
   "main": "index.js",
   "typings": "index.d.ts",
