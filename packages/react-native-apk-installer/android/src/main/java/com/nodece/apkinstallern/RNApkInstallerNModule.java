@@ -7,6 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.Settings;
 import androidx.core.content.FileProvider;
 
 import com.facebook.react.bridge.ActivityEventListener;
@@ -59,12 +60,9 @@ public class RNApkInstallerNModule extends ReactContextBaseJavaModule implements
 
   @ReactMethod
   public void install(String filePath, Promise promise) {
-    Intent intent = new Intent();
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    intent.setAction(Intent.ACTION_VIEW);
     File apkFile = new File(filePath);
     if (!apkFile.exists()) {
-      promise.reject("file not exist. " + filePath);
+      promise.reject("101", "file not exist. " + filePath);
       return;
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -73,7 +71,7 @@ public class RNApkInstallerNModule extends ReactContextBaseJavaModule implements
       try {
         contentUri = FileProvider.getUriForFile(getReactApplicationContext(), authority, apkFile);
       } catch (Exception e) {
-        promise.reject("installApk exception with authority name '" + authority + "'");
+        promise.reject("102", "installApk exception with authority name '" + authority + "'");
         return;
       }
       Intent installApp = new Intent(Intent.ACTION_INSTALL_PACKAGE);
@@ -102,7 +100,7 @@ public class RNApkInstallerNModule extends ReactContextBaseJavaModule implements
   public void haveUnknownAppSourcesPermission(Promise promise) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
       // Android 8 及以上才有
-      promise.reject(-1);
+      promise.reject("-1", "");
       return;
     }
     promise.resolve(reactContext.getPackageManager().canRequestPackageInstalls());
@@ -112,14 +110,14 @@ public class RNApkInstallerNModule extends ReactContextBaseJavaModule implements
   public void showUnknownAppSourcesPermission(Promise promise) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
       // Android 8 及以上才有
-      promise.reject(-1);
+      promise.reject("-1", "");
       return;
     }
     this.mPromise = promise;
     try {
-      Uri packageURI = Uri.parse("package:" + myActivity.getPackageName());
+      Uri packageURI = Uri.parse("package:" + reactContext.getPackageName());
       Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, packageURI);
-      this.reactContext.startActivityForResult(intent, REQUEST_SETTING_CODE);
+      this.reactContext.startActivityForResult(intent, REQUEST_SETTING_CODE, null);
     } catch(Exception e) {
       promise.reject("101", "START_ACTIVITY_ERROR");
       this.mPromise = null;

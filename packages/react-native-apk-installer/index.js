@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native';
 
-const { RNApkInstallerN } = NativeModules;
+const { RNApkInstaller } = NativeModules;
 
-export default RNApkInstallerN;
+export default RNApkInstaller;
