@@ -100,7 +100,7 @@ public class RNApkInstallerNModule extends ReactContextBaseJavaModule implements
   public void haveUnknownAppSourcesPermission(Promise promise) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
       // Android 8 及以上才有
-      promise.reject("-1", "");
+      promise.resolve(Build.VERSION.SDK_INT);
       return;
     }
     promise.resolve(reactContext.getPackageManager().canRequestPackageInstalls());
@@ -110,7 +110,7 @@ public class RNApkInstallerNModule extends ReactContextBaseJavaModule implements
   public void showUnknownAppSourcesPermission(Promise promise) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
       // Android 8 及以上才有
-      promise.reject("-1", "");
+      promise.resolve(Build.VERSION.SDK_INT);
       return;
     }
     this.mPromise = promise;
