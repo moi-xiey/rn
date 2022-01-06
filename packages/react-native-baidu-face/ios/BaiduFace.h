@@ -12,4 +12,6 @@
 
 + (void)initSDK;
 
++ (void)initSDKWithResourceName:(NSString *)resourceName;
+
 @end

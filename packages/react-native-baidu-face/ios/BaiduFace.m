@@ -14,7 +14,11 @@
 @implementation BaiduFace
 
 + (void)initSDK {
-    NSString* licensePath = [[NSBundle mainBundle] pathForResource:FACE_LICENSE_NAME ofType:FACE_LICENSE_SUFFIX];
+    [BaiduFace initSDKWithResourceName:FACE_LICENSE_NAME];
+}
+
++ (void)initSDKWithResourceName:(NSString *)resourceName {
+    NSString* licensePath = [[NSBundle mainBundle] pathForResource:resourceName ofType:FACE_LICENSE_SUFFIX];
     NSAssert([[NSFileManager defaultManager] fileExistsAtPath:licensePath], @"license文件路径不对，请仔细查看文档");
     NSString *faceLicenseId = [[NSBundle mainBundle] objectForInfoDictionaryKey:FACE_LICENSE_ID];
     [[FaceSDKManager sharedInstance] setLicenseID:faceLicenseId andLocalLicenceFile:licensePath];
